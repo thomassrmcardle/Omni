@@ -12,14 +12,15 @@ export default function Home() {
           </p>
           <div>
             <div className="mt-8 grid w-full gap-4">
+
               <ArticleCard 
                 title="Breaking News: Market Hits All-Time High" 
                 description="The stock market reached an all-time high today, with major indices showing significant gains." 
               />
 
               <ArticleCard 
-                title="Breaking News: Market Hits All-Time High" 
-                description="The stock market reached an all-time high today, with major indices showing significant gains." 
+                title="Man Bites Dog: Unbelievable News Story Shocks the World" 
+                description="A shocking incident occurred today when a man was bitten by his own dog, leaving the public stunned." 
               />
             
             </div>

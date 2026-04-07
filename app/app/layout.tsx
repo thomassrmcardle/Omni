@@ -28,6 +28,9 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">{children}</body>
+      <footer className="w-full text-center py-4 text-sm text-zinc-500 dark:text-zinc-400">
+        <p>&copy; {new Date().getFullYear()} Omni. All rights reserved.</p>
+      </footer>
     </html>
   );
 }
