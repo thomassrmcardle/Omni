@@ -23,7 +23,7 @@ function FooterLayout() {
        <div className="flex space-evenly w-full gap-8">
         <div className="match-stack">
           <h3 className="font-semibold" >Navigation</h3>
-          <ul className="flex flex-col gap-2">
+          <ul className="flex gap-2">
             <li><a href="/" className="text-white-200 hover:underline">
               Home
             </a></li>
@@ -38,7 +38,7 @@ function FooterLayout() {
 
         <div className="match-stack">
           <h3 className="font-semibold">Account</h3>
-          <ul className="flex flex-col gap-2">
+          <ul className="flex gap-2">
             <li><a href="/guidelines" className="text-white-200 hover:underline">
               Sign up
             </a></li>
@@ -53,7 +53,7 @@ function FooterLayout() {
 
         <div className="match-stack">
           <h3 className="font-semibold" >About</h3>
-          <ul className="flex flex-col gap-2">
+          <ul className="flex gap-2">
             <li><a href="/mission" className="text-white-200 hover:underline">
               Our Mission
             </a></li>
@@ -64,8 +64,17 @@ function FooterLayout() {
         </div>
 
         <div className="match-stack">
+          <h3 className="font-semibold">Social</h3>
+          <ul className="flex gap-2">
+            <li><a href="/guidelines" className="text-white-200 hover:underline">
+              Instagram
+            </a></li>
+          </ul>
+        </div>
+
+        <div className="match-stack">
           <h3 className="font-semibold" >Privacy and Terms</h3>
-          <ul className="flex flex-col gap-2">
+          <ul className="flex gap-2">
             <li><a href="/guidelines" className="text-white-200 hover:underline">
               Community Guidelines
             </a></li>
