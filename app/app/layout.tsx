@@ -27,11 +27,38 @@ function FooterLayout() {
             <li><a href="/" className="text-white-200 hover:underline">
               Home
             </a></li>
-            <li><a href="/about" className="text-white-200 hover:underline">
-              About
+            <li><a href="/donate" className="text-white-200 hover:underline">
+              Donate
             </a></li>
             <li><a href="/contact" className="text-white-200 hover:underline">
-              Contact
+              Contact Us
+            </a></li>
+          </ul>
+        </div>
+
+        <div className="match-stack">
+          <h3 className="font-semibold">Account</h3>
+          <ul className="flex flex-col gap-2">
+            <li><a href="/guidelines" className="text-white-200 hover:underline">
+              Sign up
+            </a></li>
+            <li><a href="/privacy" className="text-white-200 hover:underline">
+              Login
+            </a></li>
+            <li><a href="/recover" className="text-white-200 hover:underline">
+              Recover Account
+            </a></li>
+          </ul>
+        </div>
+
+        <div className="match-stack">
+          <h3 className="font-semibold" >About</h3>
+          <ul className="flex flex-col gap-2">
+            <li><a href="/mission" className="text-white-200 hover:underline">
+              Our Mission
+            </a></li>
+            <li><a href="/involve" className="text-white-200 hover:underline">
+              Get Involved
             </a></li>
           </ul>
         </div>
