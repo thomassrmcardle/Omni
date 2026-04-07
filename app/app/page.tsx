@@ -1,4 +1,5 @@
 import Image from "next/image";
+import ArticleCard from "../components/articleCard";
 
 export default function Home() {
   return (
@@ -11,21 +12,19 @@ export default function Home() {
           </p>
           <div>
             <div className="mt-8 grid w-full gap-4">
-              <div className="flex flex-col gap-2 rounded-lg border border-zinc-200 p-4 dark:border-zinc-700">
-                <h2 className="text-xl font-semibold">Breaking News: Market Hits All-Time High</h2>
-                <p className="text-zinc-600 dark:text-zinc-400">
-                  The stock market reached an all-time high today, with major indices showing significant gains.
-                </p>
-              </div>
-              <div className="flex flex-col gap-2 rounded-lg border border-zinc-200 p-4 dark:border-zinc-700">
-                <h2 className="text-xl font-semibold">Tech Giant Releases New Smartphone</h2>
-                <p className="text-zinc-600 dark:text-zinc-400">
-                  A leading technology company has unveiled its latest smartphone model, featuring cutting-edge technology and design.
-                </p>
-              </div>
+              <ArticleCard 
+                title="Breaking News: Market Hits All-Time High" 
+                description="The stock market reached an all-time high today, with major indices showing significant gains." 
+              />
+
+              <ArticleCard 
+                title="Breaking News: Market Hits All-Time High" 
+                description="The stock market reached an all-time high today, with major indices showing significant gains." 
+              />
+            
             </div>
           </div>
-          
+
         </div>
       </main>
     </div>
