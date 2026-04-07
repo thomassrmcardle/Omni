@@ -21,7 +21,7 @@ function FooterLayout() {
   return (
     <footer className="w-full text-center py-4 text-sm text-zinc-500 dark:text-zinc-400">
        <div className="flex space-evenly w-full gap-8">
-        <div>
+        <div className="flex flex-col">
           <h3 className="font-semibold" >Navigation</h3>
           <ul className="flex flex-col gap-2">
             <li><a href="/" className="text-white-200 hover:underline">
@@ -36,7 +36,7 @@ function FooterLayout() {
           </ul>
         </div>
 
-        <div>
+        <div className="flex flex-col">
           <h3 className="font-semibold" >Legal</h3>
           <ul className="flex flex-col gap-2">
             <li><a href="/privacy" className="text-white-200 hover:underline">
