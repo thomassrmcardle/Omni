@@ -20,9 +20,9 @@ export const metadata: Metadata = {
 function FooterLayout() {
   return (
     <footer className="w-full text-center py-4 text-sm text-zinc-500 dark:text-zinc-400">
-       <div className="flex flex-row gap-8">
+       <div className="flex justify-between w-full gap-8">
         <div>
-          <h4>Navigation</h4>
+          <h3>Navigation</h3>
           <ul className="flex flex-col gap-2">
             <li><a href="/" className="text-white-200 hover:underline">
               Home
@@ -37,7 +37,7 @@ function FooterLayout() {
         </div>
 
         <div>
-          <h4>Legal</h4>
+          <h3>Legal</h3>
           <ul className="flex flex-col gap-2">
             <li><a href="/privacy" className="text-white-200 hover:underline">
               Privacy Policy
