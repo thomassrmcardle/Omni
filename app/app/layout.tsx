@@ -21,6 +21,28 @@ function FooterLayout() {
   return (
     <footer className="w-full text-center py-4 text-sm text-zinc-500 dark:text-zinc-400">
        <div className="flex space-evenly w-full gap-8">
+        
+        <div className="match-stack">
+          <h3 className="font-semibold" >About</h3>
+          <ul className="flex flex-col gap-2">
+            <li><a href="/mission" className="text-white-200 hover:underline">
+              Our Mission
+            </a></li>
+            <li><a href="/involve" className="text-white-200 hover:underline">
+              Get Involved
+            </a></li>
+            <li><a href="/reliability" className="text-white-200 hover:underline">
+              Reliability
+            </a></li>
+            <li><a href="/press" className="text-white-200 hover:underline">
+              Press Kit
+            </a></li>
+            <li><a href="/contact" className="text-white-200 hover:underline">
+              Contact Us
+            </a></li>
+          </ul>
+        </div>
+        
         <div className="match-stack">
           <h3 className="font-semibold" >Navigation</h3>
           <ul className="flex flex-col gap-2">
@@ -47,27 +69,6 @@ function FooterLayout() {
             </a></li>
             <li><a href="/recover" className="text-white-200 hover:underline">
               Recover Account
-            </a></li>
-          </ul>
-        </div>
-
-        <div className="match-stack">
-          <h3 className="font-semibold" >About</h3>
-          <ul className="flex flex-col gap-2">
-            <li><a href="/mission" className="text-white-200 hover:underline">
-              Our Mission
-            </a></li>
-            <li><a href="/involve" className="text-white-200 hover:underline">
-              Get Involved
-            </a></li>
-            <li><a href="/reliability" className="text-white-200 hover:underline">
-              Reliability
-            </a></li>
-            <li><a href="/press" className="text-white-200 hover:underline">
-              Press Kit
-            </a></li>
-            <li><a href="/contact" className="text-white-200 hover:underline">
-              Contact Us
             </a></li>
           </ul>
         </div>
