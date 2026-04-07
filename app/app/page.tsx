@@ -19,7 +19,7 @@ export default function Home() {
               />
 
               <ArticleCard 
-                title="Man Bites Dog: Unbelievable News Story Shocks the World" 
+                title="Man Bites Dog: Story Shocks the World" 
                 description="A shocking incident occurred today when a man was bitten by his own dog, leaving the public stunned." 
               />
             
