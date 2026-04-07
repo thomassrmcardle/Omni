@@ -27,11 +27,11 @@ function FooterLayout() {
             <li><a href="/" className="text-white-200 hover:underline">
               Home
             </a></li>
+            <li><a href="/" className="text-white-200 hover:underline">
+              Profile
+            </a></li>
             <li><a href="/donate" className="text-white-200 hover:underline">
               Donate
-            </a></li>
-            <li><a href="/contact" className="text-white-200 hover:underline">
-              Contact Us
             </a></li>
           </ul>
         </div>
@@ -59,6 +59,15 @@ function FooterLayout() {
             </a></li>
             <li><a href="/involve" className="text-white-200 hover:underline">
               Get Involved
+            </a></li>
+            <li><a href="/reliability" className="text-white-200 hover:underline">
+              Reliability
+            </a></li>
+            <li><a href="/press" className="text-white-200 hover:underline">
+              Press Kit
+            </a></li>
+            <li><a href="/contact" className="text-white-200 hover:underline">
+              Contact Us
             </a></li>
           </ul>
         </div>
@@ -88,7 +97,7 @@ function FooterLayout() {
         </div>
       </div>
 
-      <p>&copy; {new Date().getFullYear()} Omni. All rights reserved.</p>
+      <p className="caption">&copy; {new Date().getFullYear()} Omni. All rights reserved.</p>
     </footer>
   );
 }

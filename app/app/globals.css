@@ -29,6 +29,11 @@ h3 {
   margin-bottom: 0.5rem;
 }
 
+.caption {
+  font-size: 0.875rem;
+  margin-top: 1rem;
+}
+
 .space-evenly {
   display: flex;
   justify-content: space-evenly;
