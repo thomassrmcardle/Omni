@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 
 function FooterLayout() {
   return (
-    <footer className="w-full py-4 text-sm text-zinc-500 dark:text-zinc-400">
+    <footer className="w-full text-center py-4 text-sm text-zinc-500 dark:text-zinc-400">
        <div className="flex space-evenly w-full gap-8">
         <div className="match-stack">
           <h3 className="font-semibold" >Navigation</h3>

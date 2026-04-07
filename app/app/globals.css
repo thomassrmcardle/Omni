@@ -32,5 +32,4 @@ h3 {
 .space-evenly {
   display: flex;
   justify-content: space-evenly;
-  align-items: center;
 }
