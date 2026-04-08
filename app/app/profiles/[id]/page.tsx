@@ -1,5 +1,6 @@
 import ArticleCard from "@/components/articleCard";
-import { Metadata } from "next/dist/lib/metadata/types/metadata-interface";
+import VerifyEmailPrompt from "@/components/prompts/verifyEmail";
+import { supabase } from "@/lib/supabaseClient";
 
 interface Props {
   params: { id: string };
@@ -23,10 +24,25 @@ export async function generateMetadata({ params }: Props) {
 
 export default function UserPage({ params }: Props) {
 
+  async function CheckLocal() {
+    const { data: { user } } = await supabase.auth.getUser();
+    if (!user) {
+      return null
+    }
+    return user;
+  }
+
+  function EmailPrompt() {
+    return <div>
+      {CheckLocal() != null ? <VerifyEmailPrompt /> : null}
+    </div>
+  }
+
+
   function MainArea() {
     return <div className="flex flex-col flex-1 w-full max-w-3xl items-center justify-center">
         <main className="flex flex-1 w-full flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-            <div className="flex flex-row items-center">
+            <div className="flex flex-row items-center gap-2">
               <img src="https://placehold.co/56x56" alt="Profile Picture" className="rounded-full" />
               <div>
                   <h1 className="text-2xl font-bold">{getUser(params.id).name}</h1>
