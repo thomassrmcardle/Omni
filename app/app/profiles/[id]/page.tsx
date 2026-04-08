@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: Props) {
 export default function UserPage({ params }: Props) {
 
   function MainArea() {
-    return <div className="flex flex-col flex-1 w-full max-w-3xl items-center justify-center bg-zinc-50 font-sans dark:bg-black">
+    return <div className="flex flex-col flex-1 w-full max-w-3xl items-center justify-center">
         <main className="flex flex-1 w-full flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
             <div>
                 <h1 className="text-2xl font-bold">{getUser(params.id).name}</h1>
@@ -54,7 +54,7 @@ export default function UserPage({ params }: Props) {
       </div>
   }
 
-  return <div className="flex flex-row w-full items-start justify-center">
+  return <div className="flex flex-row w-full items-start justify-center bg-zinc-50 font-sans dark:bg-black">
     <MainArea />
     <StatsArea />
   </div>
