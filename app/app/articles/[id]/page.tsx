@@ -42,7 +42,7 @@ export default function Home() {
 
     return (<>
         <head><title>Article Headline - Omni</title></head>
-        <div className="flex flex-row flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
+        <div className="flex flex-row flex-1 justify-center bg-zinc-50 font-sans dark:bg-black">
           <MainLayout />
           <AboutLayout />
         </div>
