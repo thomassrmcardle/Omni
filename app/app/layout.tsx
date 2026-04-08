@@ -17,6 +17,29 @@ export const metadata: Metadata = {
   description: "Stay informed with the latest headlines from around the world. From a global community, find news that matters to you, all in one place.",
 };
 
+function NavLayout() {
+  return (
+    <nav className="w-full py-4 px-8 flex items-center justify-between bg-white dark:bg-black border-b border-zinc-200 dark:border-zinc-700">
+      <a href="/" className="text-xl font-bold text-zinc-800 dark:text-zinc-200">
+        Omni
+      </a>
+      <div className="flex space-x-4">
+        <a href="/about" className="text-zinc-600 dark:text-zinc-400 hover:text-zinc-800 dark:hover:text-zinc-200">
+          About Us
+        </a>
+        <a href="/donate" className="text-zinc-600 dark:text-zinc-400 hover:text-zinc-800 dark:hover:text-zinc-200">
+          Donate
+        </a>
+      </div>
+      <div>
+        <a href="/signin" className="text-zinc-600 dark:text-zinc-400 hover:text-zinc-800 dark:hover:text-zinc-200">
+          Sign In
+        </a>
+      </div>
+    </nav>
+  );
+}
+
 function FooterLayout() {
   return (
     <footer className="w-full text-center py-4 text-sm text-zinc-500 dark:text-zinc-400">
@@ -54,21 +77,6 @@ function FooterLayout() {
             </a></li>
             <li><a href="/donate" className="text-white-200 hover:underline">
               Donate
-            </a></li>
-          </ul>
-        </div>
-
-        <div className="match-stack">
-          <h3 className="font-semibold">Account</h3>
-          <ul className="flex flex-col gap-2">
-            <li><a href="/guidelines" className="text-white-200 hover:underline">
-              Sign up
-            </a></li>
-            <li><a href="/privacy" className="text-white-200 hover:underline">
-              Login
-            </a></li>
-            <li><a href="/recover" className="text-white-200 hover:underline">
-              Recover Account
             </a></li>
           </ul>
         </div>
@@ -113,6 +121,7 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
+      <NavLayout />
       <body className="min-h-full flex flex-col">{children}</body>
       <FooterLayout />
     </html>
