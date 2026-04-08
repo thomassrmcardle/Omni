@@ -20,10 +20,10 @@ export const metadata: Metadata = {
 function NavLayout() {
   return (
     <nav className="w-full py-4 px-8 flex items-center justify-between bg-white dark:bg-black border-b border-zinc-200 dark:border-zinc-700">
-      <a href="/" className="text-xl font-bold text-zinc-800 dark:text-zinc-200">
-        Omni
-      </a>
       <div className="flex space-x-8">
+        <a href="/" className="text-xl font-bold text-zinc-800 dark:text-zinc-200">
+          Omni
+        </a>
         <a href="/about" className="text-zinc-600 dark:text-zinc-400 hover:text-zinc-800 dark:hover:text-zinc-200">
           About Us
         </a>
