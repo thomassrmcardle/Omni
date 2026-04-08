@@ -25,7 +25,7 @@ type SupabaseUser = {
   [key: string]: any;
 };
 
-function UserStatus() {
+function ProfileArea() {
   const [user, setUser] = useState<SupabaseUser | null>(null);
 
   useEffect(() => {
@@ -34,25 +34,27 @@ function UserStatus() {
     });
   }, []);
 
-  return user;
-}
-
-
-function ProfileArea() {
-  var user = UserStatus();
-
   function CreatePrompt() {
-      return <div className="flex gap-8 items-center">
+    return (
+      <div className="flex gap-8 items-center">
         <a href="/login" className="button">
           Log In
         </a>
-        <a href="/signup" className="text-zinc-600 dark:text-zinc-400 hover:text-zinc-800 dark:hover:text-zinc-200">
+        <a
+          href="/signup"
+          className="text-zinc-600 dark:text-zinc-400 hover:text-zinc-800 dark:hover:text-zinc-200"
+        >
           Sign Up
         </a>
       </div>
+    );
   }
 
-  return user ? <ProfileCard userId={user.id ?? null} /> : CreatePrompt();
+  return user ? (
+    <ProfileCard userId={user.id} />
+  ) : (
+    <CreatePrompt />
+  );
 }
 
 
