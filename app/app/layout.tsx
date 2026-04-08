@@ -39,7 +39,7 @@ function UserStatus() {
 
 
 function ProfileArea() {
-  const user = UserStatus();
+  var user = UserStatus();
 
   function CreatePrompt() {
       return <div className="flex gap-8 items-center">
