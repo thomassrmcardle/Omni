@@ -3,6 +3,8 @@ import ProfileCard from "../../../components/profileCard";
 
 export default function Home() {
 
+    document.title = "Article Headline - Omni";
+
     function MainLayout() {
         return <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
           <main className="flex flex-1 w-full max-w-3xl flex-col justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
@@ -32,14 +34,14 @@ export default function Home() {
     }
 
     function AboutLayout() {
-      return <div className="flex flex-col flex-1 justify-center bg-zinc-50 font-sans dark:bg-black">
-        <main className="flex flex-1 w-full max-w-xl flex-col py-32 px-16 bg-white dark:bg-black sm:items-start">
+      return <div className="flex flex-col flex-1 w-full max-w-lg justify-center bg-zinc-50 font-sans dark:bg-black">
+        <main className="flex flex-1 flex-col py-32 px-16 bg-white dark:bg-black sm:items-start">
           <h1 className="text-2xl font-bold">About This Article</h1>
           <ProfileCard userId="123" />
           <p className="text-zinc-600 dark:text-zinc-400 mt-4">
             Published 1 June 2024
           </p>
-          <p className="text-zinc-600 dark:text-zinc-400 mt-4">
+          <p className="text-zinc-600 dark:text-zinc-400 mt-2">
             Moderated by Jane Smith, Senior Editor
           </p>
 
@@ -64,7 +66,6 @@ export default function Home() {
     }
 
     return (<>
-        <head><title>Article Headline - Omni</title></head>
         <div className="flex flex-row flex-1 justify-center bg-zinc-50 font-sans dark:bg-black">
           <MainLayout />
           <AboutLayout />
