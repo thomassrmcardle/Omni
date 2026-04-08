@@ -2,6 +2,10 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
+import { supabase } from "@/lib/supabaseClient";
+import { useEffect, useState } from "react";
+import ProfileCard from "@/components/profileCard";
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -19,15 +23,39 @@ export const metadata: Metadata = {
 
 
 
+type SupabaseUser = {
+  id: string;
+  [key: string]: any;
+};
+
+function UserStatus() {
+  const [user, setUser] = useState<SupabaseUser | null>(null);
+
+  useEffect(() => {
+    supabase.auth.getUser().then(({ data }: any) => {
+      setUser(data.user);
+    });
+  }, []);
+
+  return user;
+}
+
+
 function ProfileArea() {
-  return <div className="flex gap-8 items-center">
-    <a href="/login" className="button">
-      Log In
-    </a>
-    <a href="/signup" className="text-zinc-600 dark:text-zinc-400 hover:text-zinc-800 dark:hover:text-zinc-200">
-      Sign Up
-    </a>
-  </div>
+  const user = UserStatus();
+
+  function CreatePrompt() {
+      return <div className="flex gap-8 items-center">
+        <a href="/login" className="button">
+          Log In
+        </a>
+        <a href="/signup" className="text-zinc-600 dark:text-zinc-400 hover:text-zinc-800 dark:hover:text-zinc-200">
+          Sign Up
+        </a>
+      </div>
+  }
+
+  return user ? <ProfileCard userId={user.id ?? null} /> : CreatePrompt();
 }
 
 

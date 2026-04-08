@@ -21,11 +21,14 @@ export default function UserPage({ params }: Props) {
   function MainArea() {
     return <div className="flex flex-col flex-1 w-full max-w-3xl items-center justify-center">
         <main className="flex flex-1 w-full flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-            <div>
-                <h1 className="text-2xl font-bold">{getUser(params.id).name}</h1>
-                <p className="text-zinc-600 dark:text-zinc-400">
-                  Contributor | Data Analyst
-                </p>
+            <div className="flex flex-row items-center">
+              <img src="https://placehold.co/56x56" alt="Profile Picture" className="rounded-full" />
+              <div>
+                  <h1 className="text-2xl font-bold">{getUser(params.id).name}</h1>
+                  <p className="text-zinc-600 dark:text-zinc-400">
+                    Contributor | Data Analyst
+                  </p>
+              </div>
             </div>
             <h2 className="text-xl font-semibold mt-8">Recent Activity</h2>
             <div className="mt-8 grid w-full gap-4">
