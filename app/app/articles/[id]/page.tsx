@@ -1,9 +1,11 @@
 import ArticleCard from "../../../components/articleCard";
 import ProfileCard from "../../../components/profileCard";
 
-export default function Home() {
+export const metadata = {
+  title: "Headline Article - Omni",
+};
 
-    document.title = "Article Headline - Omni";
+export default function Home() {
 
     function MainLayout() {
         return <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
