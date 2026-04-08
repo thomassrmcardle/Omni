@@ -1,4 +1,5 @@
 import ArticleCard from "../../../components/articleCard";
+import ProfileCard from "../../../components/profileCard";
 
 export default function Home() {
 
@@ -31,18 +32,16 @@ export default function Home() {
     }
 
     function AboutLayout() {
-      return <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
+      return <div className="flex flex-col flex-1 justify-center bg-zinc-50 font-sans dark:bg-black">
         <main className="flex flex-1 w-full max-w-3xl flex-col justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
           <h1 className="text-2xl font-bold">About This Article</h1>
-          <p className="text-zinc-600 dark:text-zinc-400 mt-4">
-            This article was written by John Doe, a seasoned journalist with over 20 years of experience in the field. John has covered a wide range of topics, from politics to technology, and is known for his in-depth analysis and engaging writing style.
-          </p>
+          <ProfileCard userId="123" />
         </main>
       </div>
     }
 
     return (<>
-        <title>Article Headline - Omni</title>
+        <head><title>Article Headline - Omni</title></head>
         <div className="flex flex-row flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
           <MainLayout />
           <AboutLayout />
