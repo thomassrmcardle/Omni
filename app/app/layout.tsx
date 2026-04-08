@@ -18,11 +18,6 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  title: "Omni - Your News Hub",
-  description: "Stay informed with the latest headlines from around the world. From a global community, find news that matters to you, all in one place.",
-};
-
 
 
 type SupabaseUser = {
