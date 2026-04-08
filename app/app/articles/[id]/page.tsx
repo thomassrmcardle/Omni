@@ -33,9 +33,32 @@ export default function Home() {
 
     function AboutLayout() {
       return <div className="flex flex-col flex-1 justify-center bg-zinc-50 font-sans dark:bg-black">
-        <main className="flex flex-1 w-full max-w-3xl flex-col justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
+        <main className="flex flex-1 w-full max-w-xl flex-col py-32 px-16 bg-white dark:bg-black sm:items-start">
           <h1 className="text-2xl font-bold">About This Article</h1>
           <ProfileCard userId="123" />
+          <p className="text-zinc-600 dark:text-zinc-400 mt-4">
+            Published 1 June 2024
+          </p>
+          <p className="text-zinc-600 dark:text-zinc-400 mt-4">
+            Moderated by Jane Smith, Senior Editor
+          </p>
+
+          <h2 className="text-xl font-bold mt-8">Sources</h2>
+          <p className="text-zinc-600 dark:text-zinc-400 mt-4">
+            1. Source One - A reputable news outlet providing in-depth coverage of the topic.
+          </p>
+          <p className="text-zinc-600 dark:text-zinc-400 mt-2">
+            2. Source Two - An expert in the field offering valuable insights and analysis.
+          </p>
+          <p className="text-zinc-600 dark:text-zinc-400 mt-2">
+            3. Source Three - A primary source with firsthand information on the subject matter.
+          </p>
+
+          <h2 className="text-xl font-bold mt-8">Contradictions</h2>
+          <p className="text-zinc-600 dark:text-zinc-400 mt-4">
+            1. Source One - A reputable news outlet providing in-depth coverage of the topic.
+          </p>
+
         </main>
       </div>
     }
