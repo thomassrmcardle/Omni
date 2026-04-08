@@ -17,6 +17,21 @@ export const metadata: Metadata = {
   description: "Stay informed with the latest headlines from around the world. From a global community, find news that matters to you, all in one place.",
 };
 
+
+
+function ProfileArea() {
+  return <div>
+    <a href="/login" className="button">
+      Log In
+    </a>
+    <a href="/signup" className="text-zinc-600 dark:text-zinc-400 hover:text-zinc-800 dark:hover:text-zinc-200">
+      Sign Up
+    </a>
+  </div>
+}
+
+
+
 function NavLayout() {
   return (
     <nav className="w-full py-4 px-8 flex items-center justify-between bg-white dark:bg-black border-b border-zinc-200 dark:border-zinc-700">
@@ -36,11 +51,7 @@ function NavLayout() {
         placeholder="Search news..."
         className="hidden sm:block px-4 py-2 rounded-lg border border-zinc-200 dark:border-zinc-700 bg-transparent text-zinc-600 dark:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
       />
-      <div>
-        <a href="/signin" className="text-zinc-600 dark:text-zinc-400 hover:text-zinc-800 dark:hover:text-zinc-200">
-          Sign In
-        </a>
-      </div>
+      <ProfileArea />
     </nav>
   );
 }

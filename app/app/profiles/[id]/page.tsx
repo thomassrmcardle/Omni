@@ -54,7 +54,7 @@ export default function UserPage({ params }: Props) {
       </div>
   }
 
-  return <div className="flex flex-row">
+  return <div className="flex flex-row w-full items-start justify-center">
     <MainArea />
     <StatsArea />
   </div>
