@@ -1,8 +1,15 @@
 import ArticleCard from "@/components/articleCard";
+import { Metadata } from "next/dist/lib/metadata/types/metadata-interface";
 
 interface Props {
   params: { id: string };
 }
+
+export const metadata: Metadata = {
+  openGraph: {
+    type: "profile",
+  },
+};
 
 function getUser(id: string) {
     return { name: "John Doe" }; // Mock user data, replace with actual data fetching logic

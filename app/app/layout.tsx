@@ -1,12 +1,27 @@
-"use client";
-
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-
+import ProfileArea from "@/components/profileArea";
 import { supabase } from "@/lib/supabaseClient";
 import { useEffect, useState } from "react";
-import ProfileCard from "@/components/profileCard";
+
+const site_title = "Omni - Global News";
+const site_description = "Stay informed with Omni, with a global community and countless articles, written by people for people.";
+
+export const metadata: Metadata = {
+  title: site_title,
+  description: site_description,
+  openGraph: {
+    title: site_title,
+    description: site_description,
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: site_title,
+    description: site_description,
+  },
+};
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -17,45 +32,6 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
-
-
-
-type SupabaseUser = {
-  id: string;
-  [key: string]: any;
-};
-
-function ProfileArea() {
-  const [user, setUser] = useState<SupabaseUser | null>(null);
-
-  useEffect(() => {
-    supabase.auth.getUser().then(({ data }: any) => {
-      setUser(data.user);
-    });
-  }, []);
-
-  function CreatePrompt() {
-    return (
-      <div className="flex gap-8 items-center">
-        <a href="/login" className="button">
-          Log In
-        </a>
-        <a
-          href="/signup"
-          className="text-zinc-600 dark:text-zinc-400 hover:text-zinc-800 dark:hover:text-zinc-200"
-        >
-          Sign Up
-        </a>
-      </div>
-    );
-  }
-
-  return user ? (
-    <ProfileCard userId={user.id} />
-  ) : (
-    <CreatePrompt />
-  );
-}
 
 
 

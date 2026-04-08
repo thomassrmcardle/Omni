@@ -3,6 +3,9 @@ import ProfileCard from "../../../components/profileCard";
 
 export const metadata = {
   title: "Headline Article - Omni",
+  openGraph: {
+    type: "article",
+  }
 };
 
 export default function Home() {
