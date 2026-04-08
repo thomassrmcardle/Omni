@@ -1,7 +1,7 @@
 "use client";
 
-import { useRouter } from 'next/router'
 import React from "react";
+import { useRouter } from 'next/navigation'
 import { supabase } from "../../lib/supabaseClient";
 
 export default function Home() {
@@ -12,7 +12,7 @@ export default function Home() {
 
   async function CreateAccount() {
 
-    const { data, error } : any = supabase.auth.signUp({
+    const { data, error } : any = await supabase.auth.signUp({
       email: input_email,
       password: input_password
     });
@@ -23,6 +23,7 @@ export default function Home() {
       console.log("Account created successfully:", data);
       router.push("/profiles/" + data.user.id);
     }
+    // Add email confirmation prompt to profile
   }
 
   return (
