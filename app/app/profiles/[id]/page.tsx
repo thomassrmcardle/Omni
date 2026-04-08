@@ -52,6 +52,7 @@ export default function UserPage({ params }: Props) {
               </div>
             </div>
             <h2 className="text-xl font-semibold mt-8">Recent Activity</h2>
+            <EmailPrompt />
             <div className="mt-8 grid w-full gap-4">
                 <ArticleCard 
                 title="User's Recent Activity" 
