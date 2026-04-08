@@ -35,7 +35,7 @@ export default function UserPage({ params }: Props) {
   async function EmailPrompt() { // Show on own profile when email not verified and loggged in
     const localUser = await CheckLocal();
     return <div>
-      {((localUser != null) && (localUser.id == params.id) && (!localUser.email_confirmed_at)) ? <VerifyEmailPrompt /> : null}
+      {((localUser != null) && (localUser.id == params.id.toString()) && (!localUser.email_confirmed_at)) ? <VerifyEmailPrompt /> : null}
     </div>
   }
 
