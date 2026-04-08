@@ -23,7 +23,7 @@ function NavLayout() {
       <a href="/" className="text-xl font-bold text-zinc-800 dark:text-zinc-200">
         Omni
       </a>
-      <div className="flex space-x-4">
+      <div className="flex space-x-8">
         <a href="/about" className="text-zinc-600 dark:text-zinc-400 hover:text-zinc-800 dark:hover:text-zinc-200">
           About Us
         </a>
@@ -31,6 +31,11 @@ function NavLayout() {
           Donate
         </a>
       </div>
+      <input
+        type="text"
+        placeholder="Search news..."
+        className="hidden sm:block px-4 py-2 rounded-lg border border-zinc-200 dark:border-zinc-700 bg-transparent text-zinc-600 dark:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+      />
       <div>
         <a href="/signin" className="text-zinc-600 dark:text-zinc-400 hover:text-zinc-800 dark:hover:text-zinc-200">
           Sign In
