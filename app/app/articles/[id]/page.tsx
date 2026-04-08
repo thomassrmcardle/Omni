@@ -8,8 +8,8 @@ export const metadata = {
 export default function Home() {
 
     function MainLayout() {
-        return <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-          <main className="flex flex-1 w-full max-w-3xl flex-col justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
+        return <div className="flex flex-col flex-1 w-full max-w-3xl items-center justify-center bg-zinc-50 font-sans dark:bg-black">
+          <main className="flex flex-1 flex-col w-full py-32 px-16 bg-white dark:bg-black sm:items-start">
             <h1 className="text-2xl font-bold">Article Headline</h1>
             <h3 className="text-lg text-zinc-600 dark:text-zinc-400">Article Subheading</h3>
             <p className="text-zinc-600 dark:text-zinc-400 mt-4">
