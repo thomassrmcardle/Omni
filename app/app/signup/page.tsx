@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import { supabase } from "../../lib/supabaseClient";
 
@@ -6,14 +8,19 @@ export default function Home() {
     var [input_email, setInputEmail] = React.useState("");
     var [input_password, setInputPassword] = React.useState("");
 
-    function CreateAccount() {
+    async function CreateAccount() {
 
         const { data, error } : any = supabase.auth.signUp({
             email: input_email,
             password: input_password
         });
 
-        return { data, error };
+        if (error) {
+            console.error("Error creating account:", error);
+        } else {
+            console.log("Account created successfully:", data);
+            document.location.href = "/profiles/" + data.user.id;
+        }
     }
 
   return (
