@@ -1,27 +1,29 @@
 "use client";
 
+import { useRouter } from 'next/router'
 import React from "react";
 import { supabase } from "../../lib/supabaseClient";
 
 export default function Home() {
+  const router = useRouter();
 
-    var [input_email, setInputEmail] = React.useState("");
-    var [input_password, setInputPassword] = React.useState("");
+  var [input_email, setInputEmail] = React.useState("");
+  var [input_password, setInputPassword] = React.useState("");
 
-    async function CreateAccount() {
+  async function CreateAccount() {
 
-        const { data, error } : any = supabase.auth.signUp({
-            email: input_email,
-            password: input_password
-        });
+    const { data, error } : any = supabase.auth.signUp({
+      email: input_email,
+      password: input_password
+    });
 
-        if (error) {
-            console.error("Error creating account:", error);
-        } else {
-            console.log("Account created successfully:", data);
-            document.location.href = "/profiles/" + data.user.id;
-        }
+    if (error) {
+      console.error("Error creating account:", error);
+    } else {
+      console.log("Account created successfully:", data);
+      router.push("/profiles/" + data.user.id);
     }
+  }
 
   return (
     <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
