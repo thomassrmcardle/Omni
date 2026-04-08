@@ -29,7 +29,7 @@ type SupabaseUser = {
 };
 
 function UserStatus() {
-  const [user, setUser] = useState<SupabaseUser | null>(null);
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
     supabase.auth.getUser().then(({ data }: any) => {
