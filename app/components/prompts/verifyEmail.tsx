@@ -1,12 +1,24 @@
+import { useRouter } from "next/navigation";
 
 export default function VerifyEmailPrompt() {
+    const router = useRouter();
+
+    function openPrompt() {
+        router.push("/verify-email");
+    }
+
     return (
         <div className="flex flex-col items-center justify-center gap-4">
             <h1 className="text-2xl font-bold">Verify Your Email</h1>
-            <p className="text-center text-zinc-600 dark:text-zinc-400">Click the link in an email to verify your account to unlock posting and other features!</p>
-            <a href="/login" className="button">
-                Send Email
-            </a>
+            <p className="text-center text-zinc-600 dark:text-zinc-400">Click the link in an email, verifying your account to unlock posting and other features!</p>
+            <div className="flex gap-4">
+                <button onClick={openPrompt} className="bg-blue-500 text-white rounded-md px-4 py-2">
+                    Resend Email
+                </button>
+                <a href="/profiles" className="text-zinc-600 dark:text-zinc-400 hover:text-zinc-800 dark:hover:text-zinc-200">
+                    Maybe later
+                </a>
+            </div>
         </div>
     );
 }
