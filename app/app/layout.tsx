@@ -20,7 +20,7 @@ export const metadata: Metadata = {
 
 
 function ProfileArea() {
-  return <div>
+  return <div className="flex gap-4 items-center">
     <a href="/login" className="button">
       Log In
     </a>
