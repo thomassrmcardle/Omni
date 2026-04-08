@@ -8,7 +8,7 @@ export default function Home() {
 
     function CreateAccount() {
 
-        const { data, error } = supabase.auth.signUp({
+        const { data, error } : any = supabase.auth.signUp({
             email: input_email,
             password: input_password
         });
