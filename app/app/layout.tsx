@@ -2,8 +2,6 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import ProfileArea from "@/components/profileArea";
-import { supabase } from "@/lib/supabaseClient";
-import { useEffect, useState } from "react";
 
 const site_title = "Omni - Global News";
 const site_description = "Stay informed with Omni, with a global community and countless articles, written by people for people.";
