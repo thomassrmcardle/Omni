@@ -20,7 +20,7 @@ export const metadata: Metadata = {
 
 
 function ProfileArea() {
-  return <div className="flex gap-4 items-center">
+  return <div className="flex gap-8 items-center">
     <a href="/login" className="button">
       Log In
     </a>
@@ -49,7 +49,7 @@ function NavLayout() {
       <input
         type="text"
         placeholder="Search news..."
-        className="hidden sm:block px-4 py-2 rounded-lg border border-zinc-200 dark:border-zinc-700 bg-transparent text-zinc-600 dark:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        className="hidden search-bar sm:block px-4 py-2 rounded-lg border border-zinc-200 dark:border-zinc-700 bg-transparent text-zinc-600 dark:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
       />
       <ProfileArea />
     </nav>
