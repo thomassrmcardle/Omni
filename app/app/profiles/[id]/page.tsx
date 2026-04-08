@@ -5,11 +5,6 @@ interface Props {
   params: { id: string };
 }
 
-export const metadata: Metadata = {
-  openGraph: {
-    type: "profile",
-  },
-};
 
 function getUser(id: string) {
     return { name: "John Doe" }; // Mock user data, replace with actual data fetching logic
@@ -20,6 +15,9 @@ export async function generateMetadata({ params }: Props) {
 
   return {
     title: (user ? user.name : "User Profile") + " - Omni",
+    openGraph: {
+      type: "profile",
+    },
   };
 }
 
