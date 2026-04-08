@@ -13,6 +13,7 @@ export default function Home() {
             password: input_password
         });
 
+        return { data, error };
     }
 
   return (
