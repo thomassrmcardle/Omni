@@ -47,6 +47,9 @@ export default function VerifyEmailPrompt({profileId}: { profileId: string }) {
         );
     }
 
-    return <p>Email already verified</p>;
+    if (isSelf) {
+        return <p>Email has already been verified.</p>;
+    }
 
+    return <p>Someone else's profile.</p>;
 }
