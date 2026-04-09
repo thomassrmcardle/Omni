@@ -3,7 +3,6 @@
 import React from "react";
 import { useRouter } from 'next/navigation'
 import { supabase } from "../../lib/supabaseClient";
-import { Metadata } from "next/dist/lib/metadata/types/metadata-interface";
 
 export default function Home() {
   const router = useRouter();

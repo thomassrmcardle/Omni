@@ -30,11 +30,11 @@ export default function Login() {
       <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-center py-32 px-16 bg-white dark:bg-black">
         <div className="w-full max-w-md card shadow-md p-8 justify-center">
 
+          <h1 className="text-2xl font-bold mb-4">Log In</h1>
+
           <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
             Don't have an account? <a href="/signup" target="_blank" className="text-blue-500 hover:underline">Sign Up</a>.
           </p>
-
-          <h1 className="text-2xl font-bold mb-4">Log In</h1>
 
           <input name="email" type="email" placeholder="Email" value={input_email} onChange={(e) => setInputEmail(e.target.value)} className="w-full border border-zinc-300 rounded-md p-2 mb-4" />
           <input name="password" type="password" placeholder="Password" value={input_password} onChange={(e) => setInputPassword(e.target.value)} className="w-full border border-zinc-300 rounded-md p-2 mb-4" />
