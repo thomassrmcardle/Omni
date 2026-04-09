@@ -37,7 +37,7 @@ export default function UserPage({ params }: Props) {
               </div>
             </div>
 
-            <p>{params.id}</p>
+            <p>{"ID: " + params.id}</p>
 
             <h2 className="text-xl font-semibold mt-8">Recent Activity</h2>
             <VerifyEmailPrompt profileId={params.id} />
