@@ -38,11 +38,8 @@ export default function Home() {
           <input type="password" placeholder="Password" value={input_password} onChange={(e) => setInputPassword(e.target.value)} className="w-full border border-zinc-300 rounded-md p-2 mb-4" />
           
           <div className="flex flex-row gap-2 items-center mb-4">
-            <input type="radio" id="remember" name="remember" checked={termsAccepted} onChange={(e) => setTermsAccepted(e.target.checked)} className="mb-4" />
-            <p className="ml-2 text-sm text-gray-600 dark:text-gray-400">I agree to the
-              <a href="/terms" className="text-blue-500 hover:underline">Terms and Conditions</a>
-              &
-              <a href="/privacy" className="text-blue-500 hover:underline">Privacy Policy</a>
+            <input type="radio" id="remember" name="remember" checked={termsAccepted} onChange={(e) => setTermsAccepted(e.target.checked)} />
+            <p className="ml-2 text-sm text-gray-600 dark:text-gray-400">I agree to the <a href="/terms" className="text-blue-500 hover:underline">Terms and Conditions</a> & <a href="/privacy" className="text-blue-500 hover:underline">Privacy Policy</a> of Omni.
             </p>
           </div>
 
