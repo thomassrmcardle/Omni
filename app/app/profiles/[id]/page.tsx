@@ -23,6 +23,8 @@ export async function generateMetadata({ params }: Props) {
 
 export default function UserPage({ params }: { params: { id: string } }) {
 
+  console.log(params)
+  console.log(params.id)
 
   function MainArea({ id }: { id: string }) {
     return <div className="flex flex-col flex-1 w-full max-w-3xl items-center justify-center">
