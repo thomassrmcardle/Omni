@@ -20,8 +20,13 @@ export default function Login() {
     if (error) {
       console.error("Error logging in account:", error);
     } else {
-      console.log("Account logged in successfully:", data);
-      router.push("/profiles/" + data.user.id);
+      const user = data.session?.user;
+      if (user) {
+        console.log("Account logged in successfully:", user);
+        router.push("/profiles/" + user.id);
+      } else {
+        console.error("No user session found after login.");
+      }
     }
   }
 

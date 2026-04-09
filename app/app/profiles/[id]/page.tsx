@@ -1,6 +1,5 @@
 import ArticleCard from "@/components/articleCard";
 import VerifyEmailPrompt from "@/components/prompts/verifyEmail";
-import { supabase } from "@/lib/supabaseClient";
 
 interface Props {
   params: { id: string };
@@ -24,21 +23,6 @@ export async function generateMetadata({ params }: Props) {
 
 export default function UserPage({ params }: Props) {
 
-  async function CheckLocal() {
-    const { data: { user } } = await supabase.auth.getUser();
-    if (!user) {
-      return null
-    }
-    return user;
-  }
-
-  async function EmailPrompt() { // Show on own profile when email not verified and loggged in
-    const localUser = await CheckLocal();
-    return <div>
-      {((localUser != null) && (localUser.id == params.id.toString()) && (!localUser.email_confirmed_at)) ? <VerifyEmailPrompt /> : null}
-    </div>
-  }
-
 
   function MainArea() {
     return <div className="flex flex-col flex-1 w-full max-w-3xl items-center justify-center">
@@ -53,7 +37,7 @@ export default function UserPage({ params }: Props) {
               </div>
             </div>
             <h2 className="text-xl font-semibold mt-8">Recent Activity</h2>
-            <EmailPrompt />
+            <VerifyEmailPrompt profileId={params.id} />
             <div className="mt-8 grid w-full gap-4">
                 <ArticleCard 
                 title="User's Recent Activity" 
