@@ -39,12 +39,12 @@ export default function Home() {
           
           <div className="flex flex-row gap-2 items-center mb-4">
             <input type="radio" id="remember" name="remember" checked={termsAccepted} onChange={(e) => setTermsAccepted(e.target.checked)} />
-            <p className="ml-2 text-sm text-gray-600 dark:text-gray-400">I agree to the <a href="/terms" className="text-blue-500 hover:underline">Terms and Conditions</a> & <a href="/privacy" className="text-blue-500 hover:underline">Privacy Policy</a> of Omni.
+            <p className="ml-2 text-sm text-gray-600 dark:text-gray-400">I agree to the <a href="/terms" target="_blank" className="text-blue-500 hover:underline">Terms and Conditions</a> & <a href="/privacy" target="_blank" className="text-blue-500 hover:underline">Privacy Policy</a> of Omni.
             </p>
           </div>
 
           <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
-            All users will also be expected to abide by the <a href="/guidelines" className="text-blue-500 hover:underline">Community Guidelines</a>, designed to ensure safety ande respect. Failure to comply with these guidelines may result in account suspension or termination.
+            All users will also be expected to abide by the <a href="/guidelines" target="_blank" className="text-blue-500 hover:underline">Community Guidelines</a>, designed to ensure safety ande respect. Failure to comply with these guidelines may result in account suspension or termination.
           </p>
 
           <button className="w-full bg-blue-500 text-white rounded-md p-2" onClick={() => CreateAccount()} disabled={!termsAccepted}>
