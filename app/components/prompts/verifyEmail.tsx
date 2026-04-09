@@ -1,7 +1,7 @@
 "use client";
 
 import { supabase } from "@/lib/supabaseClient";
-import { use, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
 export default function VerifyEmailPrompt({profileId}: { profileId: string }) {

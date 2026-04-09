@@ -36,6 +36,9 @@ export default function UserPage({ params }: Props) {
                   </p>
               </div>
             </div>
+
+            <p>{params.id}</p>
+
             <h2 className="text-xl font-semibold mt-8">Recent Activity</h2>
             <VerifyEmailPrompt profileId={params.id} />
             <div className="mt-8 grid w-full gap-4">
