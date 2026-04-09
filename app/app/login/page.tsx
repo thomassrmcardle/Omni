@@ -23,9 +23,9 @@ export default function Login() {
     });
 
     if (error) {
-      console.error("Error creating account:", error);
+      console.error("Error logging in account:", error);
     } else {
-      console.log("Account created successfully:", data);
+      console.log("Account logged in successfully:", data);
       router.push("/profiles/" + data.user.id);
     }
   }
