@@ -15,7 +15,7 @@ export async function generateMetadata({ params }: Props) {
   const user = await getUser(params.id); 
 
   return {
-    title: (user ? user.name : "User Profile") + " - Omni",
+    title: (user ? user.name : "User Profile"),
     openGraph: {
       type: "profile",
     },

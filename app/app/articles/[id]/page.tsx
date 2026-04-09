@@ -2,7 +2,7 @@ import ArticleCard from "../../../components/articleCard";
 import ProfileCard from "../../../components/profileCard";
 
 export const metadata = {
-  title: "Headline Article - Omni",
+  title: "Headline Article",
   openGraph: {
     type: "article",
   }
