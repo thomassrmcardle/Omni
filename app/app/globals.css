@@ -39,6 +39,12 @@ button:disabled {
   filter: saturate(0.5);
 }
 
+.card {
+  background-color: var(--color-background);
+  border: 1px solid var(--color-foreground);
+  border-radius: var(--radius-lg);
+}
+
 .button {
   background-color: var(--color-blue-500);
   color: var(--color-white);
