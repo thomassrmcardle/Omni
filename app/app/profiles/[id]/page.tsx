@@ -67,8 +67,11 @@ export default function UserPage({ params }: { params: { id: string } }) {
       </div>
   }
 
-  return <div className="flex flex-row w-full items-start justify-center bg-zinc-50 font-sans dark:bg-black">
-    <MainArea id={params.id} />
-    <StatsArea />
+  return <div>
+    <p>{"SOURCE ID: " + params.id}</p>
+    <div className="flex flex-row w-full items-start justify-center bg-zinc-50 font-sans dark:bg-black">
+      <MainArea id={params.id} />
+      <StatsArea />
+    </div>
   </div>
 }
