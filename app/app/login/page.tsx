@@ -33,7 +33,7 @@ export default function Login() {
           <h1 className="text-2xl font-bold mb-4">Log In</h1>
 
           <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
-            Don't have an account? <a href="/signup" target="_blank" className="text-blue-500 hover:underline">Sign Up</a>.
+            Don't have an account? <a href="/signup" className="text-blue-500 hover:underline">Sign Up</a>.
           </p>
 
           <input name="email" type="email" placeholder="Email" value={input_email} onChange={(e) => setInputEmail(e.target.value)} className="w-full border border-zinc-300 rounded-md p-2 mb-4" />

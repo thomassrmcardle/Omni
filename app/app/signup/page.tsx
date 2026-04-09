@@ -35,7 +35,7 @@ export default function Home() {
           <h1 className="text-2xl font-bold mb-4">Sign Up</h1>
 
           <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
-            Already have an account? <a href="/login" target="_blank" className="text-blue-500 hover:underline">Log In</a>.
+            Already have an account? <a href="/login" className="text-blue-500 hover:underline">Log In</a>.
           </p>
 
           <input name="email" type="email" placeholder="Email" value={input_email} onChange={(e) => setInputEmail(e.target.value)} className="w-full border border-zinc-300 rounded-md p-2 mb-4" />
