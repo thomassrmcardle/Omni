@@ -33,6 +33,12 @@ button {
   cursor: pointer;
 }
 
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+  filter: saturate(0.5);
+}
+
 .button {
   background-color: var(--color-blue-500);
   color: var(--color-white);
