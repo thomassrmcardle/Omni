@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: Props) {
   };
 }
 
-export default function UserPage({ params }: Props) {
+export default function UserPage({ params }: { params: { id: string } }) {
 
 
   function MainArea() {
