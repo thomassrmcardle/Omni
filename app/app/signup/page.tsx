@@ -5,10 +5,6 @@ import { useRouter } from 'next/navigation'
 import { supabase } from "../../lib/supabaseClient";
 import { Metadata } from "next/dist/lib/metadata/types/metadata-interface";
 
-export const metadata: Metadata = {
-  title: 'Sign Up',
-};
-
 export default function Home() {
   const router = useRouter();
 
