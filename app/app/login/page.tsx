@@ -6,20 +6,18 @@ import { supabase } from "../../lib/supabaseClient";
 import { Metadata } from "next/dist/lib/metadata/types/metadata-interface";
 
 export const metadata: Metadata = {
-  title: 'Sign Up',
+  title: 'Log In',
 };
 
-export default function Home() {
+export default function Login() {
   const router = useRouter();
 
   var [input_email, setInputEmail] = React.useState("");
   var [input_password, setInputPassword] = React.useState("");
 
-  var [termsAccepted, setTermsAccepted] = React.useState(false);
+  async function LoginToAccount() {
 
-  async function CreateAccount() {
-
-    const { data, error } : any = await supabase.auth.signUp({
+    const { data, error } : any = await supabase.auth.signInWithPassword({
       email: input_email,
       password: input_password
     });
@@ -37,24 +35,22 @@ export default function Home() {
       <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-center py-32 px-16 bg-white dark:bg-black">
         <div className="w-full max-w-md card shadow-md p-8 justify-center">
 
-          <h1 className="text-2xl font-bold mb-4">Sign Up</h1>
+          <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
+            Don't have an account? <a href="/signup" target="_blank" className="text-blue-500 hover:underline">Sign Up</a>.
+          </p>
+
+          <h1 className="text-2xl font-bold mb-4">Log In</h1>
 
           <input name="email" type="email" placeholder="Email" value={input_email} onChange={(e) => setInputEmail(e.target.value)} className="w-full border border-zinc-300 rounded-md p-2 mb-4" />
           <input name="password" type="password" placeholder="Password" value={input_password} onChange={(e) => setInputPassword(e.target.value)} className="w-full border border-zinc-300 rounded-md p-2 mb-4" />
           
-          <div className="flex flex-row gap-2 items-center mb-4">
-            <input type="checkbox" id="acceptTerms" name="remember" checked={termsAccepted} onChange={(e) => setTermsAccepted(e.target.checked)} />
-            <label htmlFor="acceptTerms" className="ml-2 text-sm text-gray-600 dark:text-gray-400">
-              I agree to the <a href="/terms" target="_blank" className="text-blue-500 hover:underline">Terms and Conditions</a> & <a href="/privacy" target="_blank" className="text-blue-500 hover:underline">Privacy Policy</a> of Omni.
-            </label>
-          </div>
 
           <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
-            All users will also be expected to abide by the <a href="/guidelines" target="_blank" className="text-blue-500 hover:underline">Community Guidelines</a>, designed to ensure safety ande respect. Failure to comply with these guidelines may result in account suspension or termination.
+            Can't remember your password? <a href="/forgot-password" target="_blank" className="text-blue-500 hover:underline">Reset it here</a>.
           </p>
 
-          <button className="w-full bg-blue-500 text-white rounded-md p-2" onClick={() => CreateAccount()} disabled={!termsAccepted}>
-            Sign Up
+          <button className="w-full bg-blue-500 text-white rounded-md p-2" onClick={() => LoginToAccount()}>
+            Log In
           </button>
 
         </div>

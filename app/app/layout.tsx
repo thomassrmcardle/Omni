@@ -7,7 +7,10 @@ const site_title = "Omni - Global News";
 const site_description = "Stay informed with Omni, with a global community and countless articles, written by people for people.";
 
 export const metadata: Metadata = {
-  title: site_title,
+  title: {
+    template: "%s | Omni",
+    default: site_title,
+  },
   description: site_description,
   openGraph: {
     title: site_title,
