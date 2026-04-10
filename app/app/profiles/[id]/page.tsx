@@ -73,11 +73,11 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
   const { id } = await params;
 
   return <div className="bg-white dark:bg-black py-32 px-16 w-full">
-    <div className="flex flex-col w-full justify-center bg-zinc-50 font-sans">
-      <div className="max-w-4xl">
+    <div className="flex flex-col w-full justify-center">
+      <div className="mx-auto">
         <TopArea id={id} />
       </div>
-      <div className="flex flex-row w-full items-start justify-center bg-zinc-50 font-sans dark:bg-black">
+      <div className="flex flex-row w-full items-start justify-center bg-zinc-50 dark:bg-black">
         <MainArea id={id} />
         <StatsArea />
       </div>
