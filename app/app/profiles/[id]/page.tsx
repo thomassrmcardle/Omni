@@ -12,7 +12,7 @@ function getUser(id: string) {
 
 
 function TopArea({ id } : { id: string }) {
-  return <div className="py-32 px-16 w-full">
+  return <div className="px-16 w-full mb-32">
         <div className="flex flex-row items-center gap-2 w-full">
             <img src="https://placehold.co/56x56" alt="Profile Picture" className="rounded-full" />
             <div>
@@ -72,9 +72,11 @@ export async function generateMetadata({ params }: Props) {
 export default async function Page({ params }: { params: Promise<{ id: string }>; }) {
   const { id } = await params;
 
-  return <div className="py-32 px-16 w-full">
-    <div className="flex flex-col w-full justify-center bg-zinc-50 font-sans bg-white dark:bg-black">
-      <TopArea id={id} />
+  return <div className="bg-white dark:bg-black py-32 px-16 w-full">
+    <div className="flex flex-col w-full justify-center bg-zinc-50 font-sans">
+      <div className="max-w-4xl">
+        <TopArea id={id} />
+      </div>
       <div className="flex flex-row w-full items-start justify-center bg-zinc-50 font-sans dark:bg-black">
         <MainArea id={id} />
         <StatsArea />
