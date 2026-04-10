@@ -74,10 +74,12 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
 
   return <div className="bg-white dark:bg-black py-32 px-16 w-full">
     <div className="flex flex-col justify-center">
-      <div className="max-w-7xl mx-auto">
-        <TopArea id={id} />
+      <div className="flex flex-row w-full items-start justify-center">
+        <div className="max-w-7xl mx-auto">
+          <TopArea id={id} />
+        </div>
       </div>
-      <div className="flex flex-row w-full items-start justify-center bg-zinc-50 dark:bg-black">
+      <div className="flex flex-row w-full items-start justify-center">
         <MainArea id={id} />
         <StatsArea />
       </div>
