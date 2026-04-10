@@ -49,10 +49,16 @@ function MainArea({ id }: { id: string }) {
 function StatsArea() {
   return <div className="flex flex-col flex-1 w-full max-w-lg justify-center font-sans">
       <main className="flex flex-1 flex-col px-16 sm:items-start">
-        <h1 className="text-2xl font-bold">User Statistics</h1>
-        <p className="text-zinc-600 dark:text-zinc-400 mt-4">
-          This section provides an overview of the user's statistics, including their activity level, contributions, and engagement with the platform.
-        </p>
+        <div className="card">
+          <p className="text-zinc-600 dark:text-zinc-400">
+            Here will be a simple bio about the user. This will be fully customizable and will help bring personality to an otherwise boring profile.
+          </p>
+          <div>
+            <h3 className="font-semibold mt-4">Badges</h3>
+            <p>Here will be a list of badges earned by the user. This will be things such as email verification, posting etc.</p>
+          </div>
+          <p>Member since Jan 2023</p>
+        </div>
       </main>
     </div>
 }
