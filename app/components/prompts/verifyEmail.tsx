@@ -55,7 +55,7 @@ export default function VerifyEmailPrompt({profileId}: { profileId: string }) {
                     <button onClick={openPrompt} className="bg-blue-500 text-white rounded-md px-4 py-2 hover:bg-blue-600 w-full text-center">
                         Send Email
                     </button>
-                    <button className="w-full bg-zinc-200 text-zinc-800 dark:bg-zinc-700 dark:text-zinc-400 rounded-md px-4 py-2 hover:bg-zinc-300 dark:hover:bg-zinc-600 text-center">
+                    <button className="w-full bg-zinc-200 dark:bg-zinc-700 rounded-md px-4 py-2 hover:bg-zinc-300 dark:hover:bg-zinc-600 text-center">
                         Maybe later
                     </button>
                 </div>

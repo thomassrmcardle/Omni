@@ -27,9 +27,9 @@ function TopArea({ id } : { id: string }) {
 
 function MainArea({ id }: { id: string }) {
   return <div className="flex flex-col flex-1 w-full max-w-3xl items-center justify-center">
-      <main className="flex flex-1 w-full flex-col items-center justify-between py-32 px-16 sm:items-start">
+      <main className="flex flex-1 w-full flex-col items-center justify-between px-16 sm:items-start">
 
-          <h2 className="text-xl font-semibold mt-8">Recent Activity</h2>
+          <h2 className="text-xl font-semibold mb-4">Recent Activity</h2>
           <VerifyEmailPrompt profileId={id} />
           <div className="mt-8 grid w-full gap-4">
               <ArticleCard 
@@ -47,8 +47,8 @@ function MainArea({ id }: { id: string }) {
 }
 
 function StatsArea() {
-  return <div className="flex flex-col flex-1 w-full max-w-lg justify-center bg-zinc-50 font-sans">
-      <main className="flex flex-1 flex-col py-32 px-16 sm:items-start">
+  return <div className="flex flex-col flex-1 w-full max-w-lg justify-center font-sans">
+      <main className="flex flex-1 flex-col px-16 sm:items-start">
         <h1 className="text-2xl font-bold">User Statistics</h1>
         <p className="text-zinc-600 dark:text-zinc-400 mt-4">
           This section provides an overview of the user's statistics, including their activity level, contributions, and engagement with the platform.
@@ -72,11 +72,13 @@ export async function generateMetadata({ params }: Props) {
 export default async function Page({ params }: { params: Promise<{ id: string }>; }) {
   const { id } = await params;
 
-  return <div className="flex flex-col w-full justify-center bg-zinc-50 font-sans bg-white dark:bg-black">
-    <TopArea id={id} />
-    <div className="flex flex-row w-full items-start justify-center bg-zinc-50 font-sans dark:bg-black">
-      <MainArea id={id} />
-      <StatsArea />
+  return <div className="py-32 px-16 w-full">
+    <div className="flex flex-col w-full justify-center bg-zinc-50 font-sans bg-white dark:bg-black">
+      <TopArea id={id} />
+      <div className="flex flex-row w-full items-start justify-center bg-zinc-50 font-sans dark:bg-black">
+        <MainArea id={id} />
+        <StatsArea />
+      </div>
     </div>
   </div>
 }
