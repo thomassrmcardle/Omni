@@ -8,7 +8,7 @@ import { useRouter } from "next/navigation";
 async function GetSelfProfile(userId?: string) {
     if (userId) {
         const { data: profile } = await supabase
-            .from("profiles")
+            .from("public_profiles")
             .select("*")
             .eq("id", userId)
             .single();
@@ -26,7 +26,7 @@ export default function VerifyEmailPrompt({profileId}: { profileId: string }) {
         async function load() {
             const { data } = await supabase.auth.getUser();
             setUser(data.user);
-            const profileData = await GetSelfProfile();
+            const profileData = await GetSelfProfile(profileId);
             setProfile(profileData);
         }
         load();
