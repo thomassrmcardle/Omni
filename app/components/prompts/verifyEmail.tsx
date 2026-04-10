@@ -4,13 +4,31 @@ import { supabase } from "@/lib/supabaseClient";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
+
+async function GetSelfProfile() {
+    const { data: userData } = await supabase.auth.getUser();
+    if (userData.user) {
+        const userId = userData.user.id;
+        const { data: profile } = await supabase
+            .from("profiles")
+            .select("*")
+            .eq("id", userId)
+            .single();
+        return profile;
+    }
+    return null;
+}
+
 export default function VerifyEmailPrompt({profileId}: { profileId: string }) {
     const [user, setUser] = useState<any>(null);
+    const [profile, setProfile] = useState<any>(null);
 
     useEffect(() => {
         async function load() {
             const { data } = await supabase.auth.getUser();
             setUser(data.user);
+            const profileData = await GetSelfProfile();
+            setProfile(profileData);
         }
         load();
     }, []);
@@ -20,7 +38,7 @@ export default function VerifyEmailPrompt({profileId}: { profileId: string }) {
     }
 
     const isSelf = user.id === profileId;
-    const isUnverified = !user.email_confirmed_at;
+    const isUnverified = !profile.email_verified;
 
     const router = useRouter();
 
