@@ -12,8 +12,8 @@ function getUser(id: string) {
 
 
 function TopArea({ id } : { id: string }) {
-  return <div className="px-16 w-full mb-32">
-        <div className="flex flex-row items-center gap-2 w-full">
+  return <div className="px-16 w-full mb-8">
+        <div className="flex flex-row items-center gap-4 w-full">
             <img src="https://placehold.co/56x56" alt="Profile Picture" className="rounded-full" />
             <div>
                 <h1 className="text-2xl font-bold">{getUser(id).name}</h1>
@@ -75,7 +75,7 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
   return <div className="bg-white dark:bg-black py-32 px-16 w-full">
     <div className="flex flex-col justify-center">
       <div className="flex flex-row w-full items-start justify-center">
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-7xl w-full">
           <TopArea id={id} />
         </div>
       </div>
