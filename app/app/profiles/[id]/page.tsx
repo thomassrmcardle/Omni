@@ -53,11 +53,11 @@ function StatsArea() {
           <p>
             Here will be a simple bio about the user. This will be fully customizable and will help bring personality to an otherwise boring profile.
           </p>
-          <div>
+          <div className="mt-8">
             <h3 className="font-semibold mt-4">Badges</h3>
             <p>Here will be a list of badges earned by the user. This will be things such as email verification, posting etc.</p>
           </div>
-          <p className="text-zinc-600 dark:text-zinc-400">Member since Jan 2023</p>
+          <p className="text-zinc-600 dark:text-zinc-400 w-full text-center mt-8">Joined Omni Jan 2023</p>
         </div>
       </main>
     </div>
