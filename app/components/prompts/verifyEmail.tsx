@@ -48,6 +48,7 @@ export default function VerifyEmailPrompt({profileId}: { profileId: string }) {
     }
 
     if (isSelf) {
+        console.log("Email already verified for user:", isUnverified);
         return <p>Email has already been verified. <b>{isUnverified}</b> </p>;
     }
 
