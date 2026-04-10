@@ -69,7 +69,6 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
   const { id } = await params;
 
   return <div>
-    <p>{"SOURCE ID: " + id}</p>
     <div className="flex flex-row w-full items-start justify-center bg-zinc-50 font-sans dark:bg-black">
       <MainArea id={id} />
       <StatsArea />
