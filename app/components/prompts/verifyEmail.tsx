@@ -5,10 +5,8 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
 
-async function GetSelfProfile() {
-    const { data: userData } = await supabase.auth.getUser();
-    if (userData.user) {
-        const userId = userData.user.id;
+async function GetSelfProfile(userId?: string) {
+    if (userId) {
         const { data: profile } = await supabase
             .from("profiles")
             .select("*")
@@ -20,6 +18,7 @@ async function GetSelfProfile() {
 }
 
 export default function VerifyEmailPrompt({profileId}: { profileId: string }) {
+    const router = useRouter();
     const [user, setUser] = useState<any>(null);
     const [profile, setProfile] = useState<any>(null);
 
@@ -38,9 +37,7 @@ export default function VerifyEmailPrompt({profileId}: { profileId: string }) {
     }
 
     const isSelf = user.id === profileId;
-    const isUnverified = !profile.email_verified;
-
-    const router = useRouter();
+    const isUnverified = profile ? !profile.email_verified : false;
 
     function openPrompt() {
         router.push("/verify-email");
