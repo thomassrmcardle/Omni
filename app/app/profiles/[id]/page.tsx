@@ -31,7 +31,7 @@ function MainArea({ id }: { id: string }) {
 
           <h2 className="text-xl font-semibold mb-4">Recent Activity</h2>
           <VerifyEmailPrompt profileId={id} />
-          <div className="mt-8 grid w-full gap-4">
+          <div className="grid w-full gap-4">
               <ArticleCard 
               title="User&apos;s Recent Activity" 
               description="This section shows the recent activity of the user, including articles they&apos;ve interacted with and comments they&apos;ve made." 
