@@ -1,4 +1,5 @@
 import ArticleCard from "@/components/articleCard";
+import ProfileOptions from "@/components/client-ui/profileOptions";
 import VerifyEmailPrompt from "@/components/prompts/verifyEmail";
 
 interface Props {
@@ -13,7 +14,8 @@ function getUser(id: string) {
 
 function TopArea({ id } : { id: string }) {
   return <div className="px-16 w-full mb-8">
-        <div className="flex flex-row items-center gap-4 w-full">
+        <div className="flex space-between">
+          <div className="flex flex-row items-center gap-4 w-full">
             <img src="https://placehold.co/56x56" alt="Profile Picture" className="rounded-full" />
             <div>
                 <h1 className="text-2xl font-bold">{getUser(id).name}</h1>
@@ -22,6 +24,10 @@ function TopArea({ id } : { id: string }) {
                 </p>
             </div>
           </div>
+          <div>
+            <ProfileOptions profileId={id} />
+          </div>
+        </div>
     </div>
 }
 
