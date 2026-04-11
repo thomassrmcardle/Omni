@@ -29,6 +29,10 @@ body {
   justify-content: flex-end;
 }
 
+.tip {
+  min-width: 2rem;
+}
+
 h3 {
   margin-bottom: 0.5rem;
 }
