@@ -2,6 +2,7 @@ import ArticleCard from "@/components/articleCard";
 import ProfileOptions from "@/components/client-ui/profileOptions";
 import VerifyEmailPrompt from "@/components/prompts/verifyEmail";
 import { supabase } from "@/lib/supabaseClient";
+import { join } from "path";
 
 interface Props {
   params: { id: string };
@@ -60,18 +61,21 @@ function MainArea({ id }: { id: string }) {
     </div>
 }
 
-function StatsArea() {
+function StatsArea({ profile }: { profile: any }) {
+
+  const joinDate = new Date(profile.created_at);
+
   return <div className="flex flex-col flex-1 w-full max-w-lg justify-center font-sans">
       <main className="flex flex-1 flex-col px-16 sm:items-start">
         <div className="card shadow-md p-8 justify-center">
           <p>
-            Here will be a simple bio about the user. This will be fully customizable and will help bring personality to an otherwise boring profile.
+            {profile.bio || "This user has not added a bio yet."}
           </p>
           <div className="mt-8">
             <h3 className="font-semibold mt-4">Badges</h3>
             <p>Here will be a list of badges earned by the user. This will be things such as email verification, posting etc.</p>
           </div>
-          <p className="text-zinc-600 dark:text-zinc-400 w-full text-center mt-8">Joined Omni Jan 2023</p>
+          <p className="text-zinc-600 dark:text-zinc-400 w-full text-center mt-8">Joined Omni { joinDate.toLocaleString('default', { month: 'long' }) } { joinDate.getFullYear() }</p>
         </div>
       </main>
     </div>
@@ -112,7 +116,7 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
       </div>
       <div className="flex flex-row w-full items-start justify-center">
         <MainArea id={id} />
-        <StatsArea />
+        <StatsArea profile={profile} />
       </div>
     </div>
   </div>
