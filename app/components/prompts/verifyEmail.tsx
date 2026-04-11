@@ -17,7 +17,7 @@ async function GetSelfProfile(userId?: string) {
     return null;
 }
 
-export default function VerifyEmailPrompt({profileId, type}: { profileId: string, type?: "general" | "pfp" }) {
+export default function VerifyEmailPrompt({profileId, type}: { profileId: string, type?: "general" }) {
     const router = useRouter();
     const [user, setUser] = useState<any>(null);
     const [profile, setProfile] = useState<any>(null);
@@ -28,10 +28,6 @@ export default function VerifyEmailPrompt({profileId, type}: { profileId: string
             title: "Verify Your Email",
             description: "Take a moment to verify your email to unlock posting and other features!"
         },
-        pfp: {
-            title: "Verify Your Email",
-            description: "Verify your email to change your profile picture!"
-        }
     }
 
     useEffect(() => {

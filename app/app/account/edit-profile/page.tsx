@@ -78,7 +78,7 @@ export default function EditProfilePage() {
         <div className="card shadow-md p-8 justify-center w-full max-w-lg">
             <h1 className="text-2xl font-bold">Edit Profile</h1>
 
-            <VerifyEmailPrompt profileId={user.id} />
+            <img src={profile.avatar_url || "https://placehold.co/32x32"} alt="Profile Picture" className="w-32 h-32 rounded-full mt-4 object-cover" />
 
             <input value={name} onChange={(e) => setName(e.target.value)} className="w-full mt-4 p-2 border rounded-md" placeholder="Name" />
             <input value={job_title} onChange={(e) => setJobTitle(e.target.value)} className="w-full mt-4 p-2 border rounded-md" placeholder="Job title" />
