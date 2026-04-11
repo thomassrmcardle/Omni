@@ -1,5 +1,6 @@
 "use client";
 
+import VerifyEmailPrompt from "@/components/prompts/verifyEmail";
 import { supabase } from "@/lib/supabaseClient";
 import { useRouter } from "next/dist/client/components/navigation";
 import { useEffect, useState } from "react";
@@ -76,6 +77,9 @@ export default function EditProfilePage() {
         
         <div className="card shadow-md p-8 justify-center w-full max-w-lg">
             <h1 className="text-2xl font-bold">Edit Profile</h1>
+
+            <VerifyEmailPrompt profileId={user.id} />
+
             <input value={name} onChange={(e) => setName(e.target.value)} className="w-full mt-4 p-2 border rounded-md" placeholder="Name" />
             <input value={job_title} onChange={(e) => setJobTitle(e.target.value)} className="w-full mt-4 p-2 border rounded-md" placeholder="Job title" />
             <textarea value={bio} onChange={(e) => setBio(e.target.value)} className="w-full mt-4 p-2 border rounded-md" placeholder="Bio" rows={6} />
