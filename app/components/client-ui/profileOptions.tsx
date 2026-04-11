@@ -31,7 +31,7 @@ export default function ProfileOptions({profileId}: { profileId: string }) {
         document.location.href = "/settings";
     }
 
-    return <div className="flex flex-row gap-4">
+    return <div className="flex flex-row gap-4 flex-end">
         <button onClick={openEditProfile} className="bg-blue-500 text-white rounded-md px-4 py-2 hover:bg-blue-600 text-center">
             Edit Profile
         </button>
