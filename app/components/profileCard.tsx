@@ -29,7 +29,7 @@ export default function ProfileCard({ userId, compact } : any) {
 
   if (!profile) {
     return (
-      <div className={"flex flex-row items-center flex-1 "+grow+" rounded-lg border border-zinc-200 p-4 dark:border-zinc-700 gap-2 animate-pulse"}>
+      <div className={"flex flex-row items-center "+grow+" rounded-lg border border-zinc-200 p-4 dark:border-zinc-700 gap-2 animate-pulse"}>
           <div className={"rounded-full bg-zinc-300 dark:bg-zinc-700 "+iconSize} />
           <div className="flex flex-col w-full">
               <div className="h-4 bg-zinc-300 dark:bg-zinc-700 rounded w-1/2 mb-2" />
