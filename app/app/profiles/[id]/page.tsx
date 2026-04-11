@@ -4,7 +4,7 @@ import VerifyEmailPrompt from "@/components/prompts/verifyEmail";
 import { supabase } from "@/lib/supabaseClient";
 
 interface Props {
-  params: Promise<{ id: string }>;
+  params: { id: string };
 }
 
 
@@ -82,7 +82,7 @@ export async function generateMetadata({ params }: Props) {
   const user = await getUser(id); 
 
   return {
-    title: (user ? user.name : "User Profile"),
+    title: (user ? user.display_name : "User Not Found"),
     openGraph: {
       type: "profile",
     },
