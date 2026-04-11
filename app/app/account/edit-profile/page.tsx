@@ -64,6 +64,11 @@ export default function EditProfilePage() {
             <button onClick={applyChanges} className="bg-blue-500 text-white rounded-md px-4 py-2 hover:bg-blue-600 w-full mt-4">
                 Save Changes
             </button>
+
+            <p className="text-sm text-gray-500 mt-4 text-center w-full">
+                Changes may take a few moments to apply.
+            </p>
+
         </div>
 
       </div>
