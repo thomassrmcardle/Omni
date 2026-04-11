@@ -34,10 +34,10 @@ export default function EditProfilePage() {
     });
 
     if (!user || !profile) {
-        return null;
+        return <div>Loading...</div>;
     }
     else {
-        setName(profile.name);
+        setName(profile.display_name);
         setBio(profile.bio || "Welcome to your profile! Here, you can share a bit about yourself, what you do, and what you're interested in.");
     }
 
