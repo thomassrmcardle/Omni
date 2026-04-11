@@ -29,10 +29,21 @@ export default function VerifyMessageScreen() {
         };
     }, []);
 
+    function EmailLabel({email }: { email?: string | null }) {
+        if (email) {
+            return <h3 className="mt-4 text-2xl w-full text-center">{email}</h3>;
+        }
+        else {
+            return <div className="animate-pulse mt-4 ">
+                <div className="h-4 bg-zinc-300 dark:bg-zinc-700 rounded w-1/2 mb-2" />
+            </div>
+        }
+    }
+
     return <div className="bg-white dark:bg-black py-32 px-16 w-full" >
         <div className="flex flex-col items-center justify-center">
             <div className="card shadow-md p-8 justify-center max-w-lg">
-                <h3 className="mt-4 text-2xl w-full text-center">{email}</h3>
+                <EmailLabel email={email} />
                 <h2 className="w-full font-bold text-xl mt-8">Check Your Email</h2>
                 <p className="w-full mt-2">We've sent you an email with a link to verify your email address. Please check your inbox and click the link to complete the verification process. It may be in your spam folder.</p>
 
