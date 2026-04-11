@@ -24,7 +24,7 @@ function TopArea({ id } : { id: string }) {
                 </p>
             </div>
           </div>
-          <div>
+          <div className="w-full">
             <ProfileOptions profileId={id} />
           </div>
         </div>
