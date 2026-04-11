@@ -1,6 +1,7 @@
 "use client";
 
 import { supabase } from "@/lib/supabaseClient";
+import { useRouter } from "next/dist/client/components/navigation";
 import { useEffect, useState } from "react";
 
 async function GetSelfProfile(userId?: string) {
@@ -16,6 +17,7 @@ async function GetSelfProfile(userId?: string) {
 }
 
 export default function EditProfilePage() {
+    const router = useRouter();
 
     let [user, setUser] = useState<any>(null);
     let [profile, setProfile] = useState<any>(null);
@@ -35,12 +37,14 @@ export default function EditProfilePage() {
             }
         }
         load();
+    });
 
+    useEffect(() => {
         if (user && profile) {
             setName(profile.display_name);
-            setBio(profile.bio || "Welcome to your profile! Here, you can share a bit about yourself, what you do, and what you're interested in.");
+            setBio(profile.bio);
         }
-    });
+    }, [user, profile]);
 
     if (!user || !profile) {
         return <div>Loading...</div>;
@@ -49,23 +53,25 @@ export default function EditProfilePage() {
     async function applyChanges() {
         setSaving(true);
 
-        await supabase.from("profiles").update({
-            display_name: name,
-            bio: bio,
-        }).eq("id", user.id);
-        await supabase.from("public_profiles").update({
+        const { error } = await supabase.from("profiles").update({
             display_name: name,
             bio: bio,
         }).eq("id", user.id);
 
-        setSaving(false);
-        document.location.href = "/profiles/" + user.id;
+        if (error) {
+            alert(error.message);
+            setSaving(false);
+            // Add error message to UI here
+            return;
+        }
+
+        router.push("/profiles/" + user.id);
     }
 
     return <div className="bg-white dark:bg-black py-32 px-16 w-full">
       <div className="flex flex-col justify-center">
         
-        <div className="card card shadow-md p-8 justify-center">
+        <div className="card card shadow-md p-8 justify-center w-full max-w-lg">
             <h1 className="text-2xl font-bold">Edit Profile</h1>
             <input value={name} onChange={(e) => setName(e.target.value)} className="w-full mt-4 p-2 border rounded-md" placeholder="Name" />
             <textarea value={bio} onChange={(e) => setBio(e.target.value)} className="w-full mt-4 p-2 border rounded-md" placeholder="Bio" rows={4} />
