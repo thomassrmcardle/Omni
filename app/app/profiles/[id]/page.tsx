@@ -29,7 +29,7 @@ function TopArea({ profile }: { profile: any }) {
             <div>
                 <h1 className="text-2xl font-bold">{profile.display_name || "New User"}</h1>
                 <p className="text-zinc-600 dark:text-zinc-400">
-                  Contributor | Data Analyst
+                  {profile.rank || "Reader"} | {profile.job_title || "Unknown Profession"}
                 </p>
             </div>
           </div>
