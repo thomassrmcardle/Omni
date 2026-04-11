@@ -17,6 +17,8 @@ export default function ProfileArea() {
     const [user, setUser] = useState<SupabaseUser | null>(null);
     const [canCreate, setCanCreate] = useState(false);
 
+    const [tipHovered, setTipHovered] = useState(false);
+
     useEffect(() => {
         supabase.auth.getUser().then(({ data }: any) => {
             setUser(data.user);
@@ -53,9 +55,10 @@ export default function ProfileArea() {
         router.push("/post/create");
     }
 
+
   return user ? (
     <div className="flex flex-row items-center gap-4">
-        <div>
+        <div onMouseEnter={() => setTipHovered(true)} onMouseLeave={() => setTipHovered(false)} className="relative inline-block">
             <button disabled={!canCreate} onClick={handleCreate} className="bg-blue-500 text-white rounded-md px-4 py-2 hover:bg-blue-600 text-center">
                 Create
             </button>
