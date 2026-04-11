@@ -23,6 +23,7 @@ export default function EditProfilePage() {
     let [profile, setProfile] = useState<any>(null);
 
     let [name, setName] = useState("");
+    let [job_title, setJobTitle] = useState("");
     let [bio, setBio] = useState("");
 
     let [saving , setSaving] = useState(false);
@@ -42,6 +43,7 @@ export default function EditProfilePage() {
     useEffect(() => {
         if (user && profile) {
             setName(profile.display_name);
+            setJobTitle(profile.job_title);
             setBio(profile.bio);
         }
     }, [user, profile]);
@@ -56,6 +58,7 @@ export default function EditProfilePage() {
         const { error } = await supabase.from("profiles").update({
             display_name: name,
             bio: bio,
+            job_title: job_title,
         }).eq("id", user.id);
 
         if (error) {
@@ -74,7 +77,9 @@ export default function EditProfilePage() {
         <div className="card shadow-md p-8 justify-center w-full max-w-lg">
             <h1 className="text-2xl font-bold">Edit Profile</h1>
             <input value={name} onChange={(e) => setName(e.target.value)} className="w-full mt-4 p-2 border rounded-md" placeholder="Name" />
-            <textarea value={bio} onChange={(e) => setBio(e.target.value)} className="w-full mt-4 p-2 border rounded-md" placeholder="Bio" rows={4} />
+            <input value={job_title} onChange={(e) => setJobTitle(e.target.value)} className="w-full mt-4 p-2 border rounded-md" placeholder="Job title" />
+            <textarea value={bio} onChange={(e) => setBio(e.target.value)} className="w-full mt-4 p-2 border rounded-md" placeholder="Bio" rows={6} />
+
             <button onClick={applyChanges} disabled={saving} className="bg-blue-500 text-white rounded-md px-4 py-2 hover:bg-blue-600 w-full mt-4">
                 {saving ? "Saving..." : "Save Changes"}
             </button>
