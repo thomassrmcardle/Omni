@@ -62,7 +62,10 @@ export default function ProfileArea() {
             <button disabled={!canCreate} onClick={handleCreate} className="bg-blue-500 text-white rounded-md px-4 py-2 hover:bg-blue-600 text-center">
                 Create
             </button>
-            <Tooltip text={canCreate ? "Create a new post" : "You need to verify your email to create posts"} />
+            <Tooltip
+                text={canCreate ? "Create a new post" : "You need to verify your email to create posts"}
+                visible={tipHovered}
+            />
         </div>
         <ProfileCard compact={true} userId={user.id} />
     </div>
