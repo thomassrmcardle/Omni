@@ -50,7 +50,7 @@ export default function VerifyEmailPrompt({profileId}: { profileId: string }) {
 
     if (isSelf && isUnverified && visible) {
         return (
-            <div className="flex flex-col items-center justify-center gap-4 w-full bg-blue-50 dark:bg-blue-900 rounded-lg p-6 border border-blue-200 dark:border-blue-700 mb-8">
+            <div className="flex flex-col items-center justify-center gap-4 w-full bg-blue-50 dark:bg-blue-900 rounded-lg p-6 border border-blue-200 dark:border-blue-700 mb-4">
                 <h1 className="text-2xl font-bold w-full text-left">Verify Your Email</h1>
                 <p className="text-center text-zinc-600 dark:text-zinc-400 w-full text-left">
                     Take a moment to verify your email to unlock posting and other features!
