@@ -8,11 +8,24 @@ export default function ProfileCard({ userId, compact } : any) {
   const [profile, setProfile] = useState<any>(null);
 
   useEffect(() => {
+    let isMounted = true; // flag to prevent state updates after unmount
     async function loadProfile() {
-      const profileData = await getProfile(userId);
-      setProfile(profileData);
+      try {
+        const profileData = await getProfile(userId);
+        if (isMounted) {
+          setProfile(profileData || {}); // fallback prevents infinite null
+        }
+      } catch (err) {
+        console.error("Failed to load profile:", err);
+        if (isMounted) setProfile(null); // break out of loading state
+      }
     }
-    loadProfile();
+    if (userId) {
+      loadProfile();
+    }
+    return () => {
+      isMounted = false; // cleanup flag on unmount
+    };
   }, [userId]);
 
   function getImg() {
