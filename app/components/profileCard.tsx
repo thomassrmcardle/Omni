@@ -1,3 +1,4 @@
+"use client";
 
 import getProfile from "@/operators/profileManager";
 import { useEffect, useState } from "react";
