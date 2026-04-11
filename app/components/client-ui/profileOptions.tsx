@@ -24,11 +24,11 @@ export default function ProfileOptions({profileId}: { profileId: string }) {
     }
 
     function openEditProfile() {
-        document.location.href = "account/edit-profile";
+        document.location.href = "/account/edit-profile";
     }
 
     function openSettings() {
-        document.location.href = "account/settings";
+        document.location.href = "/account/settings";
     }
 
     return <div className="flex flex-row gap-4 flex-end">
