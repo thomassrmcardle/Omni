@@ -6,6 +6,8 @@ import ProfileCard from "@/components/profileCard";
 import Tooltip from "./client-ui/tooltip";
 import { useRouter } from "next/dist/client/components/navigation";
 
+import getProfile from "@/operators/profileManager";
+
 type SupabaseUser = {
   id: string;
   [key: string]: any;
@@ -25,8 +27,16 @@ export default function ProfileArea() {
         });
 
         // Create listener for login
-        const { data: listener } = supabase.auth.onAuthStateChange((_event, session) => {
+        const { data: listener } = supabase.auth.onAuthStateChange(async (_event, session) => {
             setUser(session?.user ?? null);
+            if (session?.user) {
+                const profile = await getProfile(session.user.id);
+                if (profile?.email_verified) {
+                    setCanCreate(true);
+                } else {
+                    setCanCreate(false);
+                }
+            }
         });
 
         return () => {
@@ -62,10 +72,7 @@ export default function ProfileArea() {
             <button disabled={!canCreate} onClick={handleCreate} className="bg-blue-500 text-white rounded-md px-4 py-2 hover:bg-blue-600 text-center">
                 Create
             </button>
-            <Tooltip
-                text={canCreate ? "Create a new post" : "You need to verify your email to create posts"}
-                visible={tipHovered}
-            />
+            {!canCreate ? <Tooltip text="Please verify your email to create content" visible={tipHovered} /> : null}
         </div>
         <ProfileCard compact={true} userId={user.id} />
     </div>
