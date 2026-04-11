@@ -12,7 +12,7 @@ interface Props {
 
 async function getUser(id: string) {
   const { data: user } = await supabase
-      .from("users")
+      .from("public_profiles")
       .select("*")
       .eq("id", id)
       .single();
@@ -26,7 +26,7 @@ function TopArea({ profile }: { profile: any }) {
           <div className="flex flex-row items-center gap-4 w-full">
             <img src="https://placehold.co/56x56" alt="Profile Picture" className="rounded-full" />
             <div>
-                <h1 className="text-2xl font-bold">{profile.display_name}</h1>
+                <h1 className="text-2xl font-bold">{profile.display_name || "New User"}</h1>
                 <p className="text-zinc-600 dark:text-zinc-400">
                   Contributor | Data Analyst
                 </p>
