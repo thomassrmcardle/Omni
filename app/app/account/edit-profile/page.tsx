@@ -23,34 +23,42 @@ export default function EditProfilePage() {
     let [name, setName] = useState("");
     let [bio, setBio] = useState("");
 
+    let [saving , setSaving] = useState(false);
+
     useEffect(() => {
         async function load() {
             const { data } = await supabase.auth.getUser();
             setUser(data.user);
-            const profileData = await GetSelfProfile(data.user?.id);
-            setProfile(profileData);
+            if (data.user) {
+                const profileData = await GetSelfProfile(data.user.id);
+                setProfile(profileData);
+            }
         }
         load();
+
+        if (user && profile) {
+            setName(profile.display_name);
+            setBio(profile.bio || "Welcome to your profile! Here, you can share a bit about yourself, what you do, and what you're interested in.");
+        }
     });
 
     if (!user || !profile) {
         return <div>Loading...</div>;
     }
-    else {
-        setName(profile.display_name);
-        setBio(profile.bio || "Welcome to your profile! Here, you can share a bit about yourself, what you do, and what you're interested in.");
-    }
 
-    function applyChanges() {
-        supabase.from("profiles").update({
+    async function applyChanges() {
+        setSaving(true);
+
+        await supabase.from("profiles").update({
             display_name: name,
             bio: bio,
         }).eq("id", user.id);
-        supabase.from("public_profiles").update({
+        await supabase.from("public_profiles").update({
             display_name: name,
             bio: bio,
         }).eq("id", user.id);
 
+        setSaving(false);
         document.location.href = "/profiles/" + user.id;
     }
 
@@ -61,8 +69,8 @@ export default function EditProfilePage() {
             <h1 className="text-2xl font-bold">Edit Profile</h1>
             <input value={name} onChange={(e) => setName(e.target.value)} className="w-full mt-4 p-2 border rounded-md" placeholder="Name" />
             <textarea value={bio} onChange={(e) => setBio(e.target.value)} className="w-full mt-4 p-2 border rounded-md" placeholder="Bio" rows={4} />
-            <button onClick={applyChanges} className="bg-blue-500 text-white rounded-md px-4 py-2 hover:bg-blue-600 w-full mt-4">
-                Save Changes
+            <button onClick={applyChanges} disabled={saving} className="bg-blue-500 text-white rounded-md px-4 py-2 hover:bg-blue-600 w-full mt-4">
+                {saving ? "Saving..." : "Save Changes"}
             </button>
 
             <p className="text-sm text-gray-500 mt-4 text-center w-full">
