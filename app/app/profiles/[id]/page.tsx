@@ -11,12 +11,12 @@ interface Props {
 
 
 async function getUser(id: string) {
-  const { data: user } = await supabase
+  const { data, error } = await supabase
       .from("public_profiles")
       .select("*")
       .eq("id", id)
       .single();
-  return user;
+  return data;
 }
 
 

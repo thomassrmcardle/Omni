@@ -37,7 +37,7 @@ export default function EditProfilePage() {
             }
         }
         load();
-    });
+    }, []);
 
     useEffect(() => {
         if (user && profile) {
@@ -69,9 +69,9 @@ export default function EditProfilePage() {
     }
 
     return <div className="bg-white dark:bg-black py-32 px-16 w-full">
-      <div className="flex flex-col justify-center">
+      <div className="flex flex-row justify-center">
         
-        <div className="card card shadow-md p-8 justify-center w-full max-w-lg">
+        <div className="card shadow-md p-8 justify-center w-full max-w-lg">
             <h1 className="text-2xl font-bold">Edit Profile</h1>
             <input value={name} onChange={(e) => setName(e.target.value)} className="w-full mt-4 p-2 border rounded-md" placeholder="Name" />
             <textarea value={bio} onChange={(e) => setBio(e.target.value)} className="w-full mt-4 p-2 border rounded-md" placeholder="Bio" rows={4} />
