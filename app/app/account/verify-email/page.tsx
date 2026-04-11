@@ -34,7 +34,7 @@ export default function VerifyMessageScreen() {
             return <h3 className="mt-4 text-2xl w-full text-center">{email}</h3>;
         }
         else {
-            return <div className="animate-pulse mt-4 ">
+            return <div className="animate-pulse mt-4 flex flex-row items-center w-full justify-center">
                 <div className="h-4 bg-zinc-300 dark:bg-zinc-700 rounded w-1/2 mb-2" />
             </div>
         }
