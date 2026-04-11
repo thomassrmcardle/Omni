@@ -1,31 +1,39 @@
 import ArticleCard from "@/components/articleCard";
 import ProfileOptions from "@/components/client-ui/profileOptions";
 import VerifyEmailPrompt from "@/components/prompts/verifyEmail";
+import { supabase } from "@/lib/supabaseClient";
 
 interface Props {
   params: Promise<{ id: string }>;
 }
 
 
-function getUser(id: string) {
-    return { name: "John Doe" }; // Mock user data, replace with actual data fetching logic
+
+
+async function getUser(id: string) {
+  const { data: user } = await supabase
+      .from("users")
+      .select("*")
+      .eq("id", id)
+      .single();
+  return user;
 }
 
 
-function TopArea({ id } : { id: string }) {
+function TopArea({ profile }: { profile: any }) {
   return <div className="px-16 w-full mb-8">
         <div className="flex space-between">
           <div className="flex flex-row items-center gap-4 w-full">
             <img src="https://placehold.co/56x56" alt="Profile Picture" className="rounded-full" />
             <div>
-                <h1 className="text-2xl font-bold">{getUser(id).name}</h1>
+                <h1 className="text-2xl font-bold">{profile.display_name}</h1>
                 <p className="text-zinc-600 dark:text-zinc-400">
                   Contributor | Data Analyst
                 </p>
             </div>
           </div>
           <div className="w-full">
-            <ProfileOptions profileId={id} />
+            <ProfileOptions profileId={profile.id} />
           </div>
         </div>
     </div>
@@ -84,11 +92,22 @@ export async function generateMetadata({ params }: Props) {
 export default async function Page({ params }: { params: Promise<{ id: string }>; }) {
   const { id } = await params;
 
+  const profile = await getUser(id);
+
+  if (!profile) {
+    return <div className="flex items-center justify-center h-screen">
+      <div className="text-center">
+        <h1 className="text-4xl font-bold mb-4">Profile Not Found</h1>
+        <p className="text-zinc-600 dark:text-zinc-400">The profile you are looking for does not exist.</p>
+      </div>
+    </div>
+  }
+
   return <div className="bg-white dark:bg-black py-32 px-16 w-full">
     <div className="flex flex-col justify-center">
       <div className="flex flex-row w-full items-start justify-center">
         <div className="max-w-7xl w-full">
-          <TopArea id={id} />
+          <TopArea profile={profile} />
         </div>
       </div>
       <div className="flex flex-row w-full items-start justify-center">
