@@ -29,17 +29,19 @@ export default function VerifyMessageScreen() {
         };
     }, []);
 
-    return <div className="flex flex-col items-center justify-center gap-8 mt-16">
-        <div className="card shadow-md p-8 justify-center">
-            <h3 className="mt-8 mb-8">{email}</h3>
-            <h2 className="w-full">Check Your Email</h2>
-            <p className="w-full">We've sent you an email with a link to verify your email address. Please check your inbox and click the link to complete the verification process. It may be in your spam folder.</p>
+    return <div className="bg-white dark:bg-black py-32 px-16 w-full" >
+        <div className="flex flex-col items-center justify-center">
+            <div className="card shadow-md p-8 justify-center max-w-lg">
+                <h3 className="mt-4 font-2xl w-full text-center">{email}</h3>
+                <h2 className="w-full font-bold font-xl">Check Your Email</h2>
+                <p className="w-full mt-2">We've sent you an email with a link to verify your email address. Please check your inbox and click the link to complete the verification process. It may be in your spam folder.</p>
 
-            <button className="bg-blue-500 text-white rounded-md px-4 py-2 hover:bg-blue-600 text-center">
-                Resend Email
-            </button>
+                <button className="bg-blue-500 text-white rounded-md px-4 py-2 hover:bg-blue-600 text-center w-full mt-4">
+                    Resend Email
+                </button>
 
-            <p className="w-full text-zinc-600 dark:text-zinc-400 text-center mt-8">Need to change your email? <a href="/account/settings" className="text-blue-500 hover:underline">Open Account Settings</a>.</p>
+                <p className="w-full text-zinc-600 dark:text-zinc-400 text-center mt-4">Need to change your email? <a href="/account/settings" className="text-blue-500 hover:underline">Open Account Settings</a>.</p>
+            </div>
         </div>
     </div>
 }
