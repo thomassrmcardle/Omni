@@ -48,7 +48,7 @@ export default function VerifyEmailPrompt({profileId, type}: { profileId: string
     const isUnverified = profile ? !profile.email_verified : false;
 
     function openPrompt() {
-        router.push("/verify-email");
+        router.push("/account/verify-email");
     }
 
     function closePrompt() {
