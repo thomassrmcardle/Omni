@@ -14,7 +14,7 @@ export default function ProfileArea() {
 
     useEffect(() => {
         supabase.auth.getUser().then(({ data }: any) => {
-        setUser(data.user);
+            setUser(data.user);
         });
 
         // Create listener for login
