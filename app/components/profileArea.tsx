@@ -22,24 +22,40 @@ export default function ProfileArea() {
     const [tipHovered, setTipHovered] = useState(false);
 
     useEffect(() => {
-        supabase.auth.getUser().then(({ data }: any) => {
-            setUser(data.user);
-        });
+        let mounted = true;
 
-        // Create listener for login
-        const { data: listener } = supabase.auth.onAuthStateChange(async (_event, session) => {
-            setUser(session?.user ?? null);
-            if (session?.user) {
-                const profile = await getProfile(session.user.id);
-                if (profile?.email_verified) {
-                    setCanCreate(true);
+        async function init() {
+            const { data: { session } } = await supabase.auth.getSession();
+
+            if (!mounted) return;
+
+            const currentUser = session?.user ?? null;
+            setUser(currentUser);
+
+            if (currentUser) {
+                const profile = await getProfile(currentUser.id);
+                setCanCreate(!!profile?.email_verified);
+            }
+        }
+
+        init();
+
+        const { data: listener } = supabase.auth.onAuthStateChange(
+            async (_event, session) => {
+                const currentUser = session?.user ?? null;
+                setUser(currentUser);
+
+                if (currentUser) {
+                    const profile = await getProfile(currentUser.id);
+                    setCanCreate(!!profile?.email_verified);
                 } else {
                     setCanCreate(false);
                 }
             }
-        });
+        );
 
         return () => {
+            mounted = false;
             listener.subscription.unsubscribe();
         };
     }, []);
