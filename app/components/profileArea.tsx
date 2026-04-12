@@ -20,6 +20,7 @@ export default function ProfileArea() {
     const [canCreate, setCanCreate] = useState(false);
 
     const [tipHovered, setTipHovered] = useState(false);
+    const [profile, setProfile] = useState<any>(null);
 
     useEffect(() => {
         let mounted = true;
@@ -34,6 +35,7 @@ export default function ProfileArea() {
 
             if (currentUser) {
                 const profile = await getProfile(currentUser.id);
+                setProfile(profile);
                 setCanCreate(!!profile?.email_verified);
             }
         }
@@ -90,7 +92,7 @@ export default function ProfileArea() {
             </button>
             {!canCreate ? <Tooltip text="Please verify your email to create content" visible={tipHovered} /> : null}
         </div>
-        <ProfileCard compact={true} userId={user.id} />
+        <ProfileCard compact={true} profile={profile} />
     </div>
   ) : (
     <CreatePrompt />
