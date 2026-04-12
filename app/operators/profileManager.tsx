@@ -19,6 +19,8 @@ function timeout<T>(promise: Promise<T>, ms: number): Promise<T> {
 }
 
 export default async function getProfile(userId: string, retries = 3) {
+    const fetchDeadline = 5000/2; // 2.5 seconds
+
     if (!userId) {
         return null;
     }
@@ -32,7 +34,7 @@ export default async function getProfile(userId: string, retries = 3) {
                     .eq("id", userId)
                     .maybeSingle()
             ),
-            5000 // 5 second timeout
+            fetchDeadline // 5 second timeout
         ); 
 
         if (error) {
@@ -44,6 +46,13 @@ export default async function getProfile(userId: string, retries = 3) {
     }
     catch (err) {
         console.log("Error fetching profile:", err);
+        if (retries > 0) {
+            console.log(`Retrying... (${retries} attempts left)`);
+            await new Promise(res => setTimeout(res, 1000)); // wait 1 second before retrying
+            return getProfile(userId, retries - 1);
+        } else {
+            console.log("All retries failed.");
+        }
         return null;
     }
 
