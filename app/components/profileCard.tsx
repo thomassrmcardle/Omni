@@ -18,7 +18,7 @@ export default function ProfileCard({ profile, compact } : any) {
 
   if (!profile) {
     return (
-      <a className={grow} href={`/profiles/${profile.id}`} >
+      <a className={grow} href={`/profiles/${123}`} >
           <div className={"flex flex-row items-center "+grow+" rounded-lg border border-zinc-200 p-4 dark:border-zinc-700 gap-2"}>
               <img src={getImg()} alt="Profile Picture" className={"rounded-full "+iconSize} />
               <div className="flex flex-col">
