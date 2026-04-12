@@ -4,6 +4,8 @@ import VerifyEmailPrompt from "@/components/prompts/verifyEmail";
 import { supabase } from "@/lib/supabaseClient";
 import { join } from "path";
 
+import ProfileBadge from "@/components/decorations/profileBadge";
+
 interface Props {
   params: { id: string };
 }
@@ -73,7 +75,11 @@ function StatsArea({ profile }: { profile: any }) {
           </p>
           <div className="mt-8">
             <h3 className="font-semibold mt-4">Badges</h3>
-            <p>Here will be a list of badges earned by the user. This will be things such as email verification, posting etc.</p>
+            <div className="flex flex-wrap gap-4 mt-2 space-between">
+              <ProfileBadge />
+              <ProfileBadge />
+              <ProfileBadge />
+            </div>
           </div>
           <p className="text-zinc-600 dark:text-zinc-400 w-full text-center mt-8">Joined Omni { joinDate.toLocaleString('default', { month: 'long' }) } { joinDate.getFullYear() }</p>
         </div>

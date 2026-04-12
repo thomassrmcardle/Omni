@@ -6,7 +6,10 @@ import ProfileCard from "@/components/profileCard";
 import Tooltip from "./client-ui/tooltip";
 import { useRouter } from "next/dist/client/components/navigation";
 
+import { clearCachedProfile, getCachedProfile, setCachedProfile } from "@/lib/profileCache";
+
 import getProfile from "@/operators/profileManager";
+import { clear } from "console";
 
 type SupabaseUser = {
   id: string;
@@ -34,11 +37,24 @@ export default function ProfileArea() {
             setUser(currentUser);
 
             if (currentUser) {
+
+                const cachedProfile = getCachedProfile(currentUser.id);
+                if (cachedProfile) {
+                    setProfile(cachedProfile);
+                    setCanCreate(cachedProfile.email_verified);
+                    return;
+                }
+
                 const profile = await getProfile(currentUser.id);
                 if (profile) {
+                    setCachedProfile(currentUser.id, profile);
                     setProfile(profile);
                     setCanCreate(profile.email_verified);
                 }
+            }
+            else {
+                clearCachedProfile();
+                setCanCreate(false);
             }
         }
 
@@ -50,12 +66,22 @@ export default function ProfileArea() {
                 setUser(currentUser);
 
                 if (currentUser) {
+
+                    const cachedProfile = getCachedProfile(currentUser.id);
+                    if (cachedProfile) {
+                        setProfile(cachedProfile);
+                        setCanCreate(cachedProfile.email_verified);
+                        return;
+                    }
+
                     const profile = await getProfile(currentUser.id);
                     if (profile) {
+                        setCachedProfile(currentUser.id, profile);
                         setProfile(profile);
                         setCanCreate(profile.email_verified);
                     }
                 } else {
+                    clearCachedProfile();
                     setCanCreate(false);
                 }
             }
