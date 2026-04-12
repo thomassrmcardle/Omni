@@ -1,6 +1,8 @@
+"use client";
+
 import { supabase } from "@/lib/supabaseClient";
 
-export default async function getProfile(userId: string, retries = 1) {
+export default async function getProfile(userId: string, retries = 3) {
     if (!userId) {
         return null;
     }
