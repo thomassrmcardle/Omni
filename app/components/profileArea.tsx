@@ -35,8 +35,10 @@ export default function ProfileArea() {
 
             if (currentUser) {
                 const profile = await getProfile(currentUser.id);
-                setProfile(profile);
-                setCanCreate(!!profile?.email_verified);
+                if (profile) {
+                    setProfile(profile);
+                    setCanCreate(profile.email_verified);
+                }
             }
         }
 
@@ -49,7 +51,10 @@ export default function ProfileArea() {
 
                 if (currentUser) {
                     const profile = await getProfile(currentUser.id);
-                    setCanCreate(!!profile?.email_verified);
+                    if (profile) {
+                        setProfile(profile);
+                        setCanCreate(profile.email_verified);
+                    }
                 } else {
                     setCanCreate(false);
                 }
