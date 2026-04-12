@@ -24,11 +24,20 @@ export default async function getProfile(userId: string, retries = 3) {
     }
 
     try {
-        const { data: profile, error } = await supabase
-            .from("public_profiles")
-            .select("*")
-            .eq("id", userId)
-            .maybeSingle();
+        const { data: profile, error } = await timeout(
+            Promise.resolve(
+                supabase
+                    .from("public_profiles")
+                    .select("*")
+                    .eq("id", userId)
+                    .maybeSingle()
+            ),
+            5000 // 5 second timeout
+        ); 
+
+        if (error) {
+            throw error;
+        }
 
         console.log("PROFILE RESULT:", { profile, error, userId });
         return profile || null;
