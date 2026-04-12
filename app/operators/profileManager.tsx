@@ -12,6 +12,9 @@ export default async function getProfile(userId: string, retries = 3) {
         .select("*")
         .eq("id", userId)
         .maybeSingle();
+
+    console.log("PROFILE RESULT:", { profile, error, userId });
+
     if (error) {
         if (retries > 0) {
             console.warn("Error fetching profile, retrying...", error);
