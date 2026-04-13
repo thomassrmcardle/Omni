@@ -19,5 +19,5 @@ export async function GET(req: Request) {
         .update({email_verified: true})
         .eq('id', data.id)
 
-    return Response.redirect('${process.env.NEXT_PUBLIC_SITE_URL}/account/verify-success');
+    return Response.redirect(`${process.env.NEXT_PUBLIC_SITE_URL}/account/verify-success`);
 }
