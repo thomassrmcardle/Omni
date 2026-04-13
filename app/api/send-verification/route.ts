@@ -26,7 +26,7 @@ export async function sendVerifyEmail({email, displayName, token} : {email: stri
                     <p style="font-size:15px; color:#444; margin:0 0 24px 0; line-height:1.6;">
                         Thanks for signing up to Omni. Please confirm your email address by clicking the button below.
                         This link will expire in 1 hour.
-                        After this period, you will have to request another email in order to complete the verification process.
+                        You can request another one if needed.
                     </p>
                     <div style="text-align:center; margin:24px 0;">
                         <a href="${verifyURL}" style="display:inline-block; padding:12px 24px; font-size:15px; font-weight:600; color:white; background-color:#2563eb; border-radius:8px; text-decoration:none;">
