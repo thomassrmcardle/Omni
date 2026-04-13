@@ -18,7 +18,7 @@ export async function POST() {
     
     
     const profile = await getProfile(user.id)
-    if (!profile) {
+    if (!profile) { 
         return new Response("Unauthorised", {status: 401})
     }
 
