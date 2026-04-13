@@ -1,7 +1,6 @@
 
 export const runtime = 'nodejs';
 
-import { createClient } from "../../lib/supabase/server.js";
 import getProfile from "../../lib/getProfile.js";
 import { generateVerifyToken } from "../../lib/generateVerifyToken.js";
 
@@ -42,7 +41,22 @@ export async function POST() {
 
     const { Resend } = await import('resend')
     const resend = new Resend(process.env.RESEND_API_KEY);
-    const supabase = await createClient()
+
+    const { createServerClient } = await import("@supabase/ssr");
+    const { cookies } = await import("next/headers.js");
+    const cookieStore = await cookies();
+
+    const supabase = createServerClient(
+        process.env.NEXT_PUBLIC_SUPABASE_URL!,
+        process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+        {
+          cookies: {
+            get(name) {
+              return cookieStore.get(name)?.value;
+            },
+          },
+        }
+    );
 
     const {
         data: {user},
