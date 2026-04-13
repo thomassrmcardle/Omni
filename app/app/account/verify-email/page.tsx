@@ -5,6 +5,12 @@ import { supabase } from "@/lib/supabaseClient";
 import { useRouter } from "next/dist/client/components/navigation";
 import { useEffect, useState } from "react";
 
+async function sendVerificationEmail() {
+    await fetch('/api/send-verification/route', {
+        method: "POST",
+    });
+}
+
 type SupabaseUser = {
   id: string;
   [key: string]: any;
@@ -12,6 +18,7 @@ type SupabaseUser = {
 
 export default function VerifyMessageScreen() {
 
+    const [sending, setSending] = useState<boolean>(false)
     const [cooldown, setCooldown] = useState(30)
     const [email, setEmail] = useState<string | null>(null);
 
@@ -53,13 +60,17 @@ export default function VerifyMessageScreen() {
 
 
     function ResendEmail() {
-
-
+        setSending(true)
+        sendVerificationEmail() // Call function to send email
         setCooldown(30)
+        setSending(false)
+    }
 
-        // Some typa logic here
-
-    } 
+    function GetButtonText() {
+        if (sending) { return "Sending email..." }
+        if (cooldown>0) { return `Try again in ${cooldown}s` }
+        return "Resend Email"
+    }
 
     return <div className="bg-white dark:bg-black py-32 px-16 w-full" >
         <div className="flex flex-col items-center justify-center">
@@ -69,7 +80,7 @@ export default function VerifyMessageScreen() {
                 <p className="w-full mt-2">We've sent you an email with a link to verify your email address. Please check your inbox and click the link to complete the verification process. It may be in your spam folder.</p>
 
                 <button onClick={ResendEmail} disabled={cooldown > 0} className="bg-blue-500 text-white rounded-md px-4 py-2 hover:bg-blue-600 text-center w-full mt-4">
-                    {cooldown > 0 ? `Try again in ${cooldown}s` : "Resend Email"}
+                    {GetButtonText()}
                 </button>
 
                 <p className="w-full text-zinc-600 dark:text-zinc-400 text-center mt-4">Need to change your email? <a href="/account/settings" className="text-blue-500 hover:underline">Open Account Settings</a>.</p>
