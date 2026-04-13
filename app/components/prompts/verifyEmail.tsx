@@ -4,6 +4,11 @@ import { supabase } from "@/lib/supabaseClient";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
+async function sendVerificationEmail() {
+  await fetch("/api/send-verification", {
+    method: "POST",
+  });
+}
 
 async function GetSelfProfile(userId?: string) {
     if (userId) {
@@ -48,6 +53,7 @@ export default function VerifyEmailPrompt({profileId, type}: { profileId: string
     const isUnverified = profile ? !profile.email_verified : false;
 
     function openPrompt() {
+        sendVerificationEmail() // Call function to send email
         router.push("/account/verify-email");
     }
 
