@@ -1,3 +1,5 @@
+"use server";
+
 import { sendVerifyEmail } from "@/lib/email";
 import { createClient } from "@/lib/supabase/server";
 import getProfile from "@/lib/getProfile";
