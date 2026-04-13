@@ -34,7 +34,6 @@ export async function GET(req: Request) {
         })
         .eq('id', data.id)
         .select()
-        .single()
 
     if (updateError) {
         console.error(updateError);
