@@ -24,6 +24,10 @@ export default function VerifyMessageScreen() {
 
         return () => clearInterval(timer);
     }, [cooldown]);
+
+    useEffect(() => {
+        setCooldown(30)
+    }, [])
     
     useEffect(() => {
         supabase.auth.getUser().then(({ data }: any) => {
