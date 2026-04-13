@@ -1,4 +1,9 @@
-import { supabase } from "@/lib/supabaseClient";
+import { createClient } from '@supabase/supabase-js';
+
+const supabaseAdmin = createClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.SUPABASE_SERVICE_ROLE_KEY! // 🔥 NOT public
+);
 
 export async function GET(req: Request) {
     const { searchParams } = new URL(req.url)
@@ -6,7 +11,7 @@ export async function GET(req: Request) {
 
     if (!token) return new Response("Invalid", {status: 400});
 
-    const { data, error } = await supabase
+    const { data, error } = await supabaseAdmin
         .from('profiles')
         .select('*')
         .eq('email_verify_token', token)
@@ -18,7 +23,7 @@ export async function GET(req: Request) {
     
     if (error || !data) return new Response("Invalid", {status: 400});
 
-    const { error: updateError } = await supabase
+    const { error: updateError } = await supabaseAdmin
         .from('profiles')
         .update({
             email_verified: true,
@@ -26,6 +31,8 @@ export async function GET(req: Request) {
             email_verify_expires_at: null,
         })
         .eq('id', data.id)
+        .select()
+        .single()
 
     if (updateError) {
         console.error(updateError);

@@ -1,4 +1,7 @@
 
+export const metadata = {
+    title: "Email Verified",
+};
 
 
 export default function VerifyMessageScreen() {
