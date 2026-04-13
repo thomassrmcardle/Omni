@@ -11,10 +11,14 @@ export async function GET(req: Request) {
         .select('*')
         .eq('email_verify_token', token)
         .single()
+
+    if (new Date(data.email_verify_expires_at) < new Date()) {
+        return new Response("Token expired", { status: 400 });
+    }
     
     if (error || !data) return new Response("Invalid", {status: 400});
 
-    await supabase
+    const { error: updateError } = await supabase
         .from('profiles')
         .update({
             email_verified: true,
@@ -22,6 +26,11 @@ export async function GET(req: Request) {
             email_verify_expires_at: null,
         })
         .eq('id', data.id)
+
+    if (updateError) {
+        console.error(updateError);
+        return new Response("Failed to update", { status: 500 });
+    }
 
     return Response.redirect(`${process.env.NEXT_PUBLIC_SITE_URL}/account/verify-success`);
 }
