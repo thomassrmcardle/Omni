@@ -75,12 +75,17 @@ export async function POST(request: NextRequest) {
     } = await supabase.auth.getUser()
 
 
+    console.log(user, error)
+
     if (!user) {
         return new Response("Unauthorised", {status: 401})
     }
     
     
     const profile = await getProfile(user.id)
+
+    console.log(profile)
+
     if (!profile) { 
         return new Response("Unauthorised", {status: 401})
     }
