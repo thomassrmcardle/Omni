@@ -19,7 +19,7 @@ export async function sendVerifyEmail({email, displayName, token} : {email: stri
         <body style="font-family: Arial, sans-serif">
         <div style="padding: 20px;">
         <p style="font-size: 16px">Hello ${displayName},</p>
-        <p style="font-size: 16px">This email address has been linked to an Omni account. To verify this was you, please click the button below to complete the process. Please not that this is only valid for 1 hour. After this period, you will have to request another email.</p>
+        <p style="font-size: 16px">This email address has been linked to an Omni account. To verify this was you, please click the button below to complete the process. Please not that this is only valid for 1 hour. After this period, you will have to request another email to verify this address.</p>
         <a href="${verifyURL}" style="font-size: 20px; display: inline-block; font-weight: bold; padding: 10px 20px; background-color: #007bff; color: white; text-decoration: none; border-radius: 8px; margin: 8px">Verify Email</a>
         <p style="font-size: 16px">If this attempt was was not made by you, please ignore this email. We apologise for any inconvenience.</p>
         <p style="font-size: 16px">- The Omni Team</p>
