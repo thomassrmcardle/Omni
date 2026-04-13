@@ -16,16 +16,16 @@ export async function sendVerifyEmail({email, displayName, token} : {email: stri
     const htmlContent = `
         <!DOCTYPE html>
         <html>
-        <body style="font-family: Arial, sans-serif; font-size: 12px">
+        <body style="font-family: Arial, sans-serif">
         <div style="padding: 20px;">
-        <p>Hello ${displayName},</p>
-        <p>This email address has been linked to an Omni account. To verify this was you, please click the button below to complete the process. Please not that this is only valid for 1 hour. After this period, you will have to request another email.</p>
-        <a href="${verifyURL}" style="display: inline-block; font-weight: bold; padding: 10px 20px; background-color: #007bff; color: white; text-decoration: none; border-radius: 8px; margin: 8px">Verify Email</a>
-        <p>If this was not you, please ignore this email. We apologise for any inconvenience.</p>
-        <p>- The Omni Team</p>
+        <p style="font-size: 16px">Hello ${displayName},</p>
+        <p style="font-size: 16px">This email address has been linked to an Omni account. To verify this was you, please click the button below to complete the process. Please not that this is only valid for 1 hour. After this period, you will have to request another email.</p>
+        <a href="${verifyURL}" style="font-size: 20px; display: inline-block; font-weight: bold; padding: 10px 20px; background-color: #007bff; color: white; text-decoration: none; border-radius: 8px; margin: 8px">Verify Email</a>
+        <p style="font-size: 16px">If this attempt was was not made by you, please ignore this email. We apologise for any inconvenience.</p>
+        <p style="font-size: 16px">- The Omni Team</p>
         </div>
         <div style="background-color: rgb(10,10,10); padding: 12px; width: 100%;">
-            <p style="font-size: 16px; color: #888;">© ${new Date().getFullYear()} Omni. All rights reserved.</p>
+            <p style="font-size: 12px; color: #888;">© ${new Date().getFullYear()} Omni. All rights reserved.</p>
         </div>
         </body>
         </html>
