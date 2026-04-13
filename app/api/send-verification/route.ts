@@ -1,9 +1,9 @@
 
 export const runtime = 'nodejs';
 
-import { createClient } from "../../lib/supabase/server";
-import getProfile from "../../lib/getProfile";
-import { generateVerifyToken } from "../../lib/generateVerifyToken";
+import { createClient } from "../../lib/supabase/server.js";
+import getProfile from "../../lib/getProfile.js";
+import { generateVerifyToken } from "../../lib/generateVerifyToken.js";
 
 export async function sendVerifyEmail({email, displayName, token} : {email: string, displayName: string, token: string}) {
     if (email.length == 0) return {}
