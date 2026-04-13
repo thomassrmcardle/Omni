@@ -1,4 +1,4 @@
-import { supabase } from "@/lib/supabaseClient";
+import { supabase } from "./supabaseClient.js";
 
 export default async function getProfile(userId: string, retries = 3) {
   if (!userId) return null;
