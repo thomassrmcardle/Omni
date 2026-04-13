@@ -1,28 +1,35 @@
 
-import { Resend } from "resend"
-import { VerifyEmail } from "@/lib/server/emails/VerifyEmail"
+export const runtime = 'nodejs';
 
+import { VerifyEmail } from "@/lib/server/emails/VerifyEmail"
 import { createClient } from "@/lib/supabase/server";
 import getProfile from "@/lib/getProfile";
 import { generateVerifyToken } from "@/lib/generateVerifyToken";
-
-const resend = new Resend(process.env.RESEND_API_KEY);
+import { renderToStaticMarkup } from 'react-dom/server';
 
 export async function sendVerifyEmail({email, displayName, token} : {email: string, displayName: string, token: string}) {
     if (email.length == 0) return {}
 
+    const { Resend } = await import("resend");
+    const resend = new Resend(process.env.RESEND_API_KEY);
+
     const verifyURL = `${process.env.NEXT_PUBLIC_SITE_URL}/account/verify?token=${token}`;
+
+    // Render React component to HTML string
+    const htmlContent = renderToStaticMarkup(<VerifyEmail displayName={displayName} URL={verifyURL} />);
 
     await resend.emails.send({
         from: "Omni <onboarding@resend.dev>",
         to: email,
         subject: "Verify Your Email",
-        react: <VerifyEmail displayName={displayName} URL={verifyURL} />
+        html: htmlContent  // Use html instead of react
     })
-} 
+}
 
 export async function POST() {
 
+    const { Resend } = await import('resend')
+    const resend = new Resend(process.env.RESEND_API_KEY);
     const supabase = await createClient()
 
     const {
