@@ -1,6 +1,7 @@
 
 export const runtime = 'nodejs';
 
+import { NextRequest } from 'next/server.js';
 import getProfile from "../../lib/getProfile.js";
 import { generateVerifyToken } from "../../lib/generateVerifyToken.js";
 
@@ -37,22 +38,20 @@ export async function sendVerifyEmail({email, displayName, token} : {email: stri
     })
 }
 
-export async function POST() {
+export async function POST(request: NextRequest) {
 
     const { Resend } = await import('resend')
     const resend = new Resend(process.env.RESEND_API_KEY);
 
     const { createServerClient } = await import("@supabase/ssr");
-    const { cookies } = await import("next/headers.js");
-    const cookieStore = await cookies();
 
     const supabase = createServerClient(
         process.env.NEXT_PUBLIC_SUPABASE_URL!,
         process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
         {
           cookies: {
-            get(name) {
-              return cookieStore.get(name)?.value;
+            get(name: string) {
+              return request.cookies.get(name)?.value;
             },
           },
         }
