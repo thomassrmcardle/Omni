@@ -5,9 +5,9 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
 async function sendVerificationEmail() {
-  await fetch("/api/send-verification", {
-    method: "POST",
-  });
+    await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/send-verification`, {
+        method: "POST",
+    });
 }
 
 async function GetSelfProfile(userId?: string) {
