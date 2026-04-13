@@ -1,8 +1,7 @@
-"use server";
-
 import { sendVerifyEmail } from "@/lib/email";
 import { createClient } from "@/lib/supabase/server";
 import getProfile from "@/lib/getProfile";
+import { generateVerifyToken } from "@/lib/generateVerifyToken";
 
 export async function POST() {
 
@@ -29,10 +28,20 @@ export async function POST() {
         return new Response("Unauthorised", {status: 401})
     }
 
+    const verify_token = generateVerifyToken()
+
+    await supabase
+        .from('profiles')
+        .update({
+            email_verify_token: verify_token,
+            email_verify_expires_at: new Date(Date.now() + 1000*60*60) // 1 hour
+        })
+        .eq("id", user.id)
+
     await sendVerifyEmail({
         email: user.email || '',
         displayName: profile.displayName,
-        token: profile.email_verify_token
+        token: verify_token
     })
 
     return new Response('OK')
