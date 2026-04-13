@@ -45,13 +45,25 @@ export async function POST(request: NextRequest) {
 
     const { createServerClient } = await import("@supabase/ssr");
 
+    function parseCookies(cookieHeader: string) {
+        const cookies: Record<string, string> = {};
+        if (!cookieHeader) return cookies;
+        cookieHeader.split(';').forEach(cookie => {
+            const [name, value] = cookie.trim().split('=');
+            if (name && value) cookies[name] = decodeURIComponent(value);
+        });
+        return cookies;
+    }
+
+    const cookieStore = parseCookies(request.headers.get('cookie') || '');
+
     const supabase = createServerClient(
         process.env.NEXT_PUBLIC_SUPABASE_URL!,
         process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
         {
           cookies: {
             get(name: string) {
-              return request.cookies.get(name)?.value;
+              return cookieStore[name];
             },
           },
         }
