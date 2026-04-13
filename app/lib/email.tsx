@@ -1,5 +1,7 @@
+"use server";
+
 import { Resend } from "resend"
-import VerifyEmail from "@/lib/server/emails/VerifyEmail"
+import { VerifyEmail } from "@/lib/server/emails/VerifyEmail"
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -12,6 +14,6 @@ export async function sendVerifyEmail({email, displayName, token} : {email: stri
         from: "Omni <onboarding@resend.dev>",
         to: email,
         subject: "Verify Your Email",
-        react: VerifyEmail({displayName, verifyURL})
+        react: <VerifyEmail displayName={displayName} URL={verifyURL} />
     })
 } 
