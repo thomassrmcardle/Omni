@@ -1,5 +1,5 @@
 import { Resend } from "resend"
-import VerifyEmail from "@/emails/VerifyEmail"
+import VerifyEmail from "@/lib/server/emails/VerifyEmail"
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
