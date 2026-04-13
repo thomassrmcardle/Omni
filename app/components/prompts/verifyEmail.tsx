@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
 async function sendVerificationEmail() {
-    await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/send-verification/route`, {
+    await fetch('/api/send-verification/route', {
         method: "POST",
     });
 }
