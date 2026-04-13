@@ -91,7 +91,7 @@ export async function POST(request: NextRequest) {
     }
 
 
-    if (!profile.email) {
+    if (!user.email) {
         return new Response("Unauthorised", {status: 401})
     }
 
