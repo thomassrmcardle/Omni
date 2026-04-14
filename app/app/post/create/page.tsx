@@ -32,8 +32,8 @@ export default function ArticleEditor() {
 
     return <div className="bg-white dark:bg-black py-32 px-16 w-full">
         <div className="card">
-            <input name="article_headline" placeholder="Headline">New Article</input>
-            <input name="article_subheadline" placeholder="Subheadline"></input>
+            <input name="article_headline" placeholder="Headline" value={"New Article"} />
+            <input name="article_subheadline" placeholder="Subheadline" />
         </div>
         <ArticleEditor />
     </div>
