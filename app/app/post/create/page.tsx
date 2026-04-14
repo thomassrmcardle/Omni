@@ -25,7 +25,7 @@ export default function ArticleEditor() {
     const updateSection = (id : number, field : keyof Section, value: string) => {
         setSections(prev =>
             prev.map(section => 
-                section.id == id ? {...section, [field]: value} : section
+                section.id === id ? {...section, [field]: value} : section
             )
         )
     }
@@ -36,8 +36,8 @@ export default function ArticleEditor() {
 
 
     function SectionStack() {
-        return <div>{sections.map((section : any) => (<div>
-                <div key={section.id}>
+        return <div>{sections.map((section : any) => (
+                <div key={section.id} className="flex items-start mt-4">
                     <select
                         value={section.type}
                         onChange={e => updateSection(section.id, "type", e.target.value)}
@@ -55,7 +55,7 @@ export default function ArticleEditor() {
                         onClick={() => removeSection(section.id)}
                     >Delete</button>
                 </div>
-            </div>))}</div>
+            ))}</div>
     }
 
     function ArticleEditor() {
