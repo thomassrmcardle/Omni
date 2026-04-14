@@ -4,12 +4,10 @@ import { useState } from "react"
 
 export default function ArticleEditor() {
 
-    var [sections, setSections] = useState([])
+    var [sections, setSections] = useState<string[]>([])
 
-    function AddSection() {
-        var curSections : any = sections
-        curSections.push('Test Section')
-        setSections(curSections)
+    const addSection = () => {
+        setSections(prev => [...prev, 'Test Section'])
     }
 
     function ArticleEditor() {
@@ -22,9 +20,9 @@ export default function ArticleEditor() {
 
         return <div>
             {sections.map((section : any) => (<div>
-                <p>section</p>
+                <p>{section}</p>
             </div>))}
-            <button className="w-full" onClick={AddSection}>
+            <button className="w-full" onClick={addSection}>
                 Add Section
             </button>
         </div>
