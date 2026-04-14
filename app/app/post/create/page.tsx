@@ -28,8 +28,8 @@ export default function ArticleEditor() {
         </div>
     }
 
-    return <div className="bg-white dark:bg-black py-32 px-16 w-full">
-        <div className="card">
+    return <div className="bg-white dark:bg-black py-32 px-16 w-full flex flex-col">
+        <div className="card w-full max-w-2xl flex flex-col">
             <input name="article_headline" placeholder="Headline" value={"New Article"} />
             <input name="article_subheadline" placeholder="Subheadline" />
         </div>
