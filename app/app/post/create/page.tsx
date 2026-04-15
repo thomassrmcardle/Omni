@@ -9,27 +9,29 @@ type Section = {
 }
 
 
-function SectionStack([sections_list, updateSection, removeSection] : any) {
-    return <div>{sections_list.map((section: any) => (
-        <div key={section.id} className="flex items-start mt-4">
-            <select
-                value={section.type}
-                onChange={e => updateSection(section.id, "type", e.target.value)}
-            >
-                <option value="text">Text</option>
-                <option value="Quote">Quote</option>
-            </select>
+function SectionStack({ sections_list, updateSection, removeSection } : any) {
+    return <div className="w-full max-w-lg flex flex-col items-center">
+        {sections_list.map((section: any) => (
+            <div key={section.id} className="flex items-start mt-4">
+                <select
+                    value={section.type}
+                    onChange={e => updateSection(section.id, "type", e.target.value)}
+                >
+                    <option value="text">Text</option>
+                    <option value="quote">Quote</option>
+                </select>
 
-            <textarea
-                value={section.content}
-                onChange={e => updateSection(section.id, "content", e.target.value)}
-            />
+                <textarea
+                    value={section.content}
+                    onChange={e => updateSection(section.id, "content", e.target.value)}
+                />
 
-            <button
-                onClick={() => removeSection(section.id)}
-            >Delete</button>
-        </div>
-    ))}</div>
+                <button
+                    onClick={() => removeSection(section.id)}
+                >Delete</button>
+            </div>
+        ))}
+    </div>
 }
 
 
