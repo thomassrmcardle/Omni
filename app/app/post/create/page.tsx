@@ -12,7 +12,7 @@ type Section = {
 function SectionStack({ sections_list, updateSection, removeSection } : any) {
     return <div className="w-full max-w-lg flex flex-col items-center">
         {sections_list.map((section: any) => (
-            <div key={section.id} className="flex items-start mt-4">
+            <div key={section.id} className="w-full flex items-start mt-4">
                 <select
                     value={section.type}
                     onChange={e => updateSection(section.id, "type", e.target.value)}
@@ -21,7 +21,7 @@ function SectionStack({ sections_list, updateSection, removeSection } : any) {
                     <option value="quote">Quote</option>
                 </select>
 
-                <textarea
+                <textarea className="w-full max-w-lg"
                     value={section.content}
                     onChange={e => updateSection(section.id, "content", e.target.value)}
                 />
@@ -61,27 +61,16 @@ export default function ArticleEditor() {
         setSections(prev => prev.filter(section => section.id != id))
     }
 
-    function ArticleEditor() {
-
-        // Features to add:
-        // Text inputs to edit sections
-        // Add button to append sections
-        // Section type selector
-        // Delete button to remove sections
-
-        return <div>
-            <SectionStack sections_list={sections} updateSection={updateSection} removeSection={removeSection} />
-            <button className="w-full" onClick={addSection}>
-                Add Section
-            </button>
-        </div>
-    }
-
     return <div className="bg-white dark:bg-black py-32 px-16 w-full flex flex-col items-center">
         <div className="card w-full max-w-2xl flex flex-col">
             <input name="article_headline" placeholder="Headline" value={headline} onChange={e => SetHeadline(e.target.value)} />
             <input name="article_subheadline" placeholder="Subheadline" />
         </div>
-        <ArticleEditor />
+        <div className="w-full max-w-2xl">
+            <SectionStack sections_list={sections} updateSection={updateSection} removeSection={removeSection} />
+            <button className="w-full max-w-lg" onClick={addSection}>
+                Add Section
+            </button>
+        </div>
     </div>
 }
