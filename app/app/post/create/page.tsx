@@ -40,7 +40,9 @@ export default function ArticleEditor() {
 
     var [headline, SetHeadline] = useState("New Article")
 
-    var [sections, setSections] = useState<Section[]>([])
+    var [sections, setSections] = useState<Section[]>([
+        {id: Date.now(), type: 'text', content: ''} // Empty section to help get started
+    ])
 
     const addSection = () => {
         setSections(prev => [
@@ -62,11 +64,11 @@ export default function ArticleEditor() {
     }
 
     return <div className="bg-white dark:bg-black py-32 px-16 w-full flex flex-col items-center">
-        <div className="card w-full max-w-2xl flex flex-col">
+        <div className="card w-full max-w-2xl flex flex-col p-4">
             <input name="article_headline" placeholder="Headline" value={headline} onChange={e => SetHeadline(e.target.value)} />
             <input name="article_subheadline" placeholder="Subheadline" />
         </div>
-        <div className="w-full max-w-2xl">
+        <div className="flex flex-col items-center w-full max-w-2xl">
             <SectionStack sections_list={sections} updateSection={updateSection} removeSection={removeSection} />
             <button className="w-full max-w-lg" onClick={addSection}>
                 Add Section
