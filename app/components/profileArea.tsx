@@ -123,7 +123,7 @@ export default function ProfileArea() {
             </button>
             {!canCreate ? <Tooltip text="Please verify your email to create content" visible={tipHovered} /> : null}
         </div>
-        <ProfileCard compact={true} profile={profile} />
+        <ProfileCard compact={true} userId={user.id} profile={profile} />
     </div>
   ) : (
     <CreatePrompt />

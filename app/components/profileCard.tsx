@@ -3,7 +3,7 @@
 import getProfile from "@/operators/profileManager";
 import { useEffect, useState } from "react";
 
-export default function ProfileCard({ profile, compact } : any) {
+export default function ProfileCard({ profile, userId, compact } : any) {
 
   function getImg() {
     if (compact) {
@@ -18,12 +18,12 @@ export default function ProfileCard({ profile, compact } : any) {
 
   if (!profile) {
     return (
-      <a className={grow} href={`/profiles/${123}`} >
+      <a className={grow + " animate-pulse"} href={`/profiles/${userId || 123}`} >
           <div className={"flex flex-row items-center "+grow+" rounded-lg border border-zinc-200 p-4 dark:border-zinc-700 gap-2"}>
               <img src={getImg()} alt="Profile Picture" className={"rounded-full "+iconSize} />
               <div className="flex flex-col">
-                  <h2 className="font-semibold">New User</h2>
-                  {compact ? null : <p className="text-sm text-zinc-600 dark:text-zinc-400">Data analyst</p>}
+                  <div className="bg-zinc-200 w-full h-6" />
+                  <div className="bg-zinc-200 w-full h-4"></div>
               </div>
           </div>
       </a>
