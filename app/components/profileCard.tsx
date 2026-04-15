@@ -22,8 +22,8 @@ export default function ProfileCard({ profile, userId, compact } : any) {
           <div className={"flex flex-row items-center "+grow+" rounded-lg border border-zinc-200 p-4 dark:border-zinc-700 gap-2"}>
               <img src={getImg()} alt="Profile Picture" className={"rounded-full "+iconSize} />
               <div className="flex flex-col">
-                  <div className="bg-zinc-200 w-full h-6" />
-                  <div className="bg-zinc-200 w-full h-4"></div>
+                  <div className="bg-zinc-300 dark:bg-zinc-700 rounded w-1/2 mb-2 h-6" />
+                  <div className="bg-zinc-300 dark:bg-zinc-700 rounded w-1/4 mb-2 h-4"></div>
               </div>
           </div>
       </a>
