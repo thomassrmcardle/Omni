@@ -13,7 +13,7 @@ export default function ProfileCard({ profile, userId, compact } : any) {
     }
   }
 
-  var grow = compact ? "" : "w-full";
+  var grow = "w-full";
   var iconSize = compact ? "w-6 h-6" : "w-10 h-10";
 
   if (!profile) {
@@ -22,7 +22,7 @@ export default function ProfileCard({ profile, userId, compact } : any) {
           <div className={"flex flex-row items-center "+grow+" rounded-lg border border-zinc-200 p-4 dark:border-zinc-700 gap-2"}>
               <div className={"rounded-full bg-zinc-300 dark:bg-zinc-700 " + iconSize} />
               <div className="flex flex-col w-full">
-                  <div className="bg-zinc-300 dark:bg-zinc-700 rounded w-1/2 mb-2 h-6" />
+                  <div className="bg-zinc-300 dark:bg-zinc-700 rounded w-1/2 mb-2 h-4" />
                   <div className="bg-zinc-300 dark:bg-zinc-700 rounded w-1/4 h-4" />
               </div>
           </div>
