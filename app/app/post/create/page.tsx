@@ -9,8 +9,8 @@ type Section = {
 }
 
 
-function SectionStack([sections, updateSection, removeSection] : any) {
-    return <div>{sections.map((section: any) => (
+function SectionStack([sections_list, updateSection, removeSection] : any) {
+    return <div>{sections_list.map((section: any) => (
         <div key={section.id} className="flex items-start mt-4">
             <select
                 value={section.type}
@@ -68,7 +68,7 @@ export default function ArticleEditor() {
         // Delete button to remove sections
 
         return <div>
-            <SectionStack sections={sections} updateSection={updateSection} removeSection={removeSection} />
+            <SectionStack sections_list={sections} updateSection={updateSection} removeSection={removeSection} />
             <button className="w-full" onClick={addSection}>
                 Add Section
             </button>
