@@ -10,9 +10,9 @@ type Section = {
 
 
 function SectionStack({ sections_list, updateSection, removeSection } : any) {
-    return <div className="w-full max-w-lg flex flex-col items-center">
+    return <div className="w-full flex flex-col items-center">
         {sections_list.map((section: any) => (
-            <div key={section.id} className="w-full flex items-start mt-4">
+            <div key={section.id} className="flex gap-4 w-full flex justify-center items-start mt-4">
                 <select
                     value={section.type}
                     onChange={e => updateSection(section.id, "type", e.target.value)}
@@ -68,7 +68,7 @@ export default function ArticleEditor() {
             <input name="article_headline" placeholder="Headline" value={headline} onChange={e => SetHeadline(e.target.value)} />
             <input name="article_subheadline" placeholder="Subheadline" />
         </div>
-        <div className="flex flex-col items-center w-full max-w-2xl">
+        <div className="flex flex-col items-center w-full">
             <SectionStack sections_list={sections} updateSection={updateSection} removeSection={removeSection} />
             <button className="w-full max-w-lg" onClick={addSection}>
                 Add Section

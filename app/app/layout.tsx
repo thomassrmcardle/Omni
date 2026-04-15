@@ -63,7 +63,7 @@ function NavLayout() {
 function FooterLayout() {
   return (
     <footer className="w-full text-center py-4 text-sm text-zinc-500 dark:text-zinc-400">
-       <div className="flex space-evenly w-full gap-8">
+       <div className="flex space-evenly w-full gap-8 mt-4">
         
         <div className="match-stack">
           <h3 className="font-semibold" >About</h3>
