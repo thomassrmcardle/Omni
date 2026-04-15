@@ -8,6 +8,31 @@ type Section = {
     content: string
 }
 
+
+function SectionStack([sections, updateSection, removeSection] : any) {
+    return <div>{sections.map((section: any) => (
+        <div key={section.id} className="flex items-start mt-4">
+            <select
+                value={section.type}
+                onChange={e => updateSection(section.id, "type", e.target.value)}
+            >
+                <option value="text">Text</option>
+                <option value="Quote">Quote</option>
+            </select>
+
+            <textarea
+                value={section.content}
+                onChange={e => updateSection(section.id, "content", e.target.value)}
+            />
+
+            <button
+                onClick={() => removeSection(section.id)}
+            >Delete</button>
+        </div>
+    ))}</div>
+}
+
+
 export default function ArticleEditor() {
 
 
@@ -34,30 +59,6 @@ export default function ArticleEditor() {
         setSections(prev => prev.filter(section => section.id != id))
     }
 
-
-    function SectionStack() {
-        return <div>{sections.map((section : any) => (
-                <div key={section.id} className="flex items-start mt-4">
-                    <select
-                        value={section.type}
-                        onChange={e => updateSection(section.id, "type", e.target.value)}
-                    >
-                        <option value="text">Text</option>
-                        <option value="Quote">Quote</option>
-                    </select>
-
-                    <textarea
-                        value={section.content}
-                        onChange={e => updateSection(section.id, "content", e.target.value)}
-                    />
-
-                    <button
-                        onClick={() => removeSection(section.id)}
-                    >Delete</button>
-                </div>
-            ))}</div>
-    }
-
     function ArticleEditor() {
 
         // Features to add:
@@ -67,7 +68,7 @@ export default function ArticleEditor() {
         // Delete button to remove sections
 
         return <div>
-            <SectionStack />
+            <SectionStack sections={sections} updateSection={updateSection} removeSection={removeSection} />
             <button className="w-full" onClick={addSection}>
                 Add Section
             </button>
