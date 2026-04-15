@@ -70,7 +70,7 @@ export default function ArticleEditor() {
         </div>
         <div className="flex flex-col items-center w-full">
             <SectionStack sections_list={sections} updateSection={updateSection} removeSection={removeSection} />
-            <button className="w-full max-w-lg" onClick={addSection}>
+            <button className="w-full max-w-lg mt-4" onClick={addSection}>
                 Add Section
             </button>
         </div>
